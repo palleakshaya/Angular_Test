@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -25,12 +25,14 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 })
 export class ProductsComponent {
   @Input() id: any;
-  @Input() product = {
+  @Input() product: any = {
+    id: '',
     name: '',
     description: '',
     price: '',
     category: '',
     image: '',
+    quantity: '',
   };
   isLoading: boolean = true;
   msg = '';
@@ -39,10 +41,9 @@ export class ProductsComponent {
     private route: ActivatedRoute,
     public router: Router
   ) {}
-  addTocart(product: any) {
-    this.productsService.addTocart(product).then(() => {
-      this.router.navigate(['cart']);
-    });
+  @Output() cartEvent = new EventEmitter<any>();
+  cart() {
+    this.productsService.addingCart(this.product);
   }
 }
 

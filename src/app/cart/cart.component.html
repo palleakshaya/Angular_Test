@@ -1,1 +1,22 @@
-<p>cart works!</p>
+<mat-card appearance="outlined" class="card">
+  <mat-card-content>
+    <div class="outer">
+      <div class="main">
+        <img src="{{ Products.image }}" alt="" />
+        <div class="title">
+          <h2>{{ Products.name }}</h2>
+        </div>
+        <div class="price">
+          <p>{{ Products.description }}</p>
+        </div>
+        <button mat-raised-button (click)="deleteProduct()">delete</button>
+      </div>
+
+      <div class="cost">
+        <h1>Quantity:{{ Products.quantity }}</h1>
+        <h1>{{ Products.price }} * {{ Products.quantity }}</h1>
+        <button mat-raised-button (click)="orders()">Buy</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

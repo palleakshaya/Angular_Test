@@ -11,12 +11,10 @@
     </div>
 
     <div class="info-add">
-      <button mat-icon-button routerLink="/products/{{ id }}" class="info">
+      <button mat-icon-button routerLink="{{ product.id }}" class="info">
         <mat-icon>info</mat-icon>
       </button>
-      <button mat-raised-button (click)="addTocart(product)">
-        ➕Add To Cart
-      </button>
+      <button mat-raised-button (click)="cart()">➕Add To Cart</button>
     </div>
   </div></mat-card
 >

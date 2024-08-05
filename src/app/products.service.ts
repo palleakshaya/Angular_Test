@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ProductsService {
+  CartData: any = [];
   //const API = "https://66b0acdd6a693a95b539ba20.mockapi.io/Products"
   getProductsByid(id: string) {
     return fetch(
@@ -15,14 +16,19 @@ export class ProductsService {
       (res) => res.json()
     );
   }
-  addTocart(product: any) {
+  addingCart(product: any) {
     // this.movies.push(newMovie);
-    return fetch(`https://66b0acdd6a693a95b539ba20.mockapi.io/Products`, {
-      method: 'POST',
-      body: JSON.stringify(product),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then((res) => res.json());
+    this.CartData.push(product);
+  }
+  gettingCart() {
+    return this.CartData;
+  }
+  deleteProduct(id: any) {
+    return fetch(
+      `https://66b0acdd6a693a95b539ba20.mockapi.io/Products/${id} `,
+      {
+        method: 'DELETE',
+      }
+    ).then((res) => res.json());
   }
 }

@@ -31,4 +31,9 @@ export class ProductListComponent {
         this.msg = 'Something went wrong';
       });
   }
+  cart(product: any) {
+    console.log(product);
+    this.productsService.addingCart(product);
+    //    this.route.navigate([`cart/${product.id}`]);
+  }
 }

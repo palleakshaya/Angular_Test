@@ -3,6 +3,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { HomeComponent } from './home/home.component';
 import { Component } from '@angular/core';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CartComponent } from './cart/cart.component';
+import { OrdersComponent } from './orders/orders.component';
 
 export const routes: Routes = [
   {
@@ -18,5 +20,13 @@ export const routes: Routes = [
         component: ProductDetailsComponent,
       },
     ],
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
   },
 ];
