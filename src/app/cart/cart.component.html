@@ -1,4 +1,27 @@
-<mat-card appearance="outlined" class="card">
+<button (click)="placeOrder()" mat-button>
+  <span class="material-symbols-outlined"> Place order</span>
+</button>
+<div class="grand-total">
+  <h3>Grand Total: {{ Total | currency }}</h3>
+</div>
+<div class="whole-page">
+  @for(cartItem of ProductsList ; track $index){
+  <div class="container">
+    <img src="{{ cartItem.image }}" alt="" />
+    <div class="content">
+      <h3>{{ cartItem.name }}</h3>
+      <p>Quantity : {{ cartItem.qty }}</p>
+      <p>price : {{ cartItem.price | currency }}</p>
+      <p>total : {{ cartItem.qty * +cartItem.price | currency }}</p>
+      <button (click)="removeFromCart(cartItem)" mat-button>
+        <span class="material-symbols-outlined">Remove From Cart</span>
+      </button>
+    </div>
+  </div>
+  }
+</div>
+
+<!-- <mat-card appearance="outlined" class="card">
   <mat-card-content>
     <div class="outer">
       <div class="main">
@@ -9,7 +32,9 @@
         <div class="price">
           <p>{{ Products.description }}</p>
         </div>
-        <button mat-raised-button (click)="deleteProduct()">delete</button>
+        <button mat-raised-button (click)="deleteProduct(Products.id)">
+          delete
+        </button>
       </div>
 
       <div class="cost">
@@ -19,4 +44,4 @@
       </div>
     </div>
   </mat-card-content>
-</mat-card>
+</mat-card> -->

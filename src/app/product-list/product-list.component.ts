@@ -16,6 +16,9 @@ export class ProductListComponent {
   constructor(public productsService: ProductsService) {
     // console.log(this.movieService.movies)
   }
+  trackById(index: number, product: any): string {
+    return product.id;
+  }
   ngOnInit() {
     this.loadProducts();
   }
@@ -31,9 +34,13 @@ export class ProductListComponent {
         this.msg = 'Something went wrong';
       });
   }
-  cart(product: any) {
-    console.log(product);
-    this.productsService.addingCart(product);
-    //    this.route.navigate([`cart/${product.id}`]);
+
+  addOneProduct(item: any) {
+    return this.productsService.addProduct(item);
   }
+  // addToCart(product: any) {
+  //   console.log(product);
+  //   this.productsService.addingCart(product);
+  //   //    this.route.navigate([`cart/${product.id}`]);
+  // }
 }

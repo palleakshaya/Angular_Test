@@ -41,9 +41,12 @@ export class ProductsComponent {
     private route: ActivatedRoute,
     public router: Router
   ) {}
-  @Output() cartEvent = new EventEmitter<any>();
+  @Output() addItemEvent: EventEmitter<any> = new EventEmitter<any>();
+  addToCart() {
+    this.addItemEvent.emit(this.product);
+  }
   cart() {
-    this.productsService.addingCart(this.product);
+    this.productsService.addProduct(this.product);
   }
 }
 
