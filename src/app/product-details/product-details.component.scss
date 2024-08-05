@@ -1,0 +1,13 @@
+.details{
+    height: 660px;
+    width: 350px;
+    
+    }
+.Image {
+        width: 330px;
+        height: 350px;
+        border-radius: 20px;
+        object-fit: cover;
+        // box-shadow: 0px 1px 0px 2px lightgrey;
+        transition: all 1s;
+      }

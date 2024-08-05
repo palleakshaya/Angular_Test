@@ -1,0 +1,9 @@
+<div class="product-card">
+  @if (isLoading) {
+  <h1>Loading....</h1>
+  } @for(product of products; track products.id){
+  <app-products [product]="product" />
+  }
+</div>
+<!-- (deleteItem)="deleteItem($event)"
+  [id]="movie.id" -->

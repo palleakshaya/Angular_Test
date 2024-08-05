@@ -1,28 +1,20 @@
 <mat-card class="wholecontainer">
   <div class="container">
-    <img src="{{ products.image }}" alt="Extraordinary" />
+    <img src="{{ product.image }}" alt="Extraordinary" />
     <div class="headingAndRating">
       <h1>
-        {{ products.name }}
+        {{ product.name }}
       </h1>
       <p class="price">
-        {{ products.price }}
+        {{ product.price }}
       </p>
     </div>
-    <div class="cat_des_info">
-      <div class="cat_des">
-        <div class="category">
-          <p>
-            {{ products.category }}
-          </p>
-        </div>
-        <div class="info">
-          <button mat-icon-button class="details">
-            <!-- routerLink="/search/{{ id }}" -->
-            <mat-icon>info</mat-icon>
-          </button>
-        </div>
-      </div>
-    </div>
+
+    <button mat-icon-button routerLink="/products/{{ id }}" class="info">
+      <mat-icon>info</mat-icon>
+    </button>
+    <button mat-raised-button (click)="addTocart(product)">
+      ➕Add To Cart
+    </button>
   </div></mat-card
 >

@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { ProductsService } from '../products.service';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -16,12 +18,32 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     FormsModule,
     MatCardModule,
+    RouterLink,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
-  products: any;
+  @Input() id: any;
+  @Input() product = {
+    name: '',
+    description: '',
+    price: '',
+    category: '',
+    image: '',
+  };
+  isLoading: boolean = true;
+  msg = '';
+  constructor(
+    public productsService: ProductsService,
+    private route: ActivatedRoute,
+    public router: Router
+  ) {}
+  addTocart(product: any) {
+    this.productsService.addTocart(product).then(() => {
+      this.router.navigate(['cart']);
+    });
+  }
   // products = [
   //   {
   //     id: 1,
