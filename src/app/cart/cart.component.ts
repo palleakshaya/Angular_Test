@@ -13,9 +13,6 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './cart.component.scss',
 })
 export class CartComponent {
-  placeOrder() {
-    throw new Error('Method not implemented.');
-  }
   Products: any;
   @Input() ProductsList: any = [];
   Total: number = 0;
@@ -31,10 +28,9 @@ export class CartComponent {
 
   calculateGrandTotal() {
     this.Total = this.ProductsList.reduce(
-      (total: number, item: { price: string; qty: number }) => {
-        return total + parseFloat(item.price) * item.qty;
-      },
-      0
+      (total: number, item: { price: string; quantity: number }) => {
+        return total + parseFloat(item.price) * item.quantity;
+      }
     );
   }
   total() {
@@ -77,14 +73,24 @@ export class CartComponent {
   //     date: new Date().toLocaleString(),
   //   };
 
-  //   this.productsService.addOrder(orderDetails).then((response) => {
-  //     console.log('Order placed successfully:', response);
-  //     this.router.navigate(['/orders'], { state: { orderDetails } });
-  //   }).catch((error) => {
-  //     console.error('Error placing order:', error);
-  //   });
-  // }
+  placeOrder() {
+    const orderDetails = {
+      items: this.ProductsList,
+      total: this.Total,
+      orderId: this.generateOrderId(),
+      date: new Date().toLocaleString(),
+    };
 
+    this.productsService
+      .addOrder(orderDetails)
+      .then((response) => {
+        console.log('Order placed successfully:', response);
+        this.router.navigate(['/orders'], { state: { orderDetails } });
+      })
+      .catch((error) => {
+        console.error('Error placing order:', error);
+      });
+  }
   id: number = 1;
   generateOrderId() {
     return (this.id += 1);

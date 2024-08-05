@@ -45,4 +45,28 @@ export class ProductsService {
       }
     ).then((res) => res.json());
   }
+  getOrdersP(): Promise<any> {
+    return fetch('https://66b0a87f6a693a95b539a6fd.mockapi.io/Orders').then(
+      (res) => res.json()
+    );
+  }
+  postOrderToApi(orderDetails: any): Promise<any> {
+    return fetch('https://66b0acdd6a693a95b539ba20.mockapi.io/Orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderDetails),
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    });
+  }
+  orders: Array<any> = [];
+  addOrder(orderDetails: any): Promise<any> {
+    this.orders.push(orderDetails);
+    return this.postOrderToApi(orderDetails);
+  }
 }
