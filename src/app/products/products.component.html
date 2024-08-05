@@ -10,11 +10,13 @@
       </p>
     </div>
 
-    <button mat-icon-button routerLink="/products/{{ id }}" class="info">
-      <mat-icon>info</mat-icon>
-    </button>
-    <button mat-raised-button (click)="addTocart(product)">
-      ➕Add To Cart
-    </button>
+    <div class="info-add">
+      <button mat-icon-button routerLink="/products/{{ id }}" class="info">
+        <mat-icon>info</mat-icon>
+      </button>
+      <button mat-raised-button (click)="addTocart(product)">
+        ➕Add To Cart
+      </button>
+    </div>
   </div></mat-card
 >
