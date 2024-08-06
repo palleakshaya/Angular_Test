@@ -1,5 +1,5 @@
 <button (click)="placeOrder()" mat-button>
-  <span class="material-symbols-outlined"> Place order</span>
+  <span class="material-symbols-outlined"> Place Order</span>
 </button>
 
 <div class="whole-page">
@@ -7,7 +7,9 @@
   <div class="container">
     <img src="{{ cartItem.image }}" alt="" />
     <div class="content">
-      <h3>{{ cartItem.name }}</h3>
+      <h3>
+        <span style="font-weight: bold">{{ cartItem.name }}</span>
+      </h3>
       <p>Quantity : {{ cartItem.quantity }}</p>
       <p>price : {{ cartItem.price | currency }}</p>
       <p>total : {{ cartItem.quantity * +cartItem.price | currency }}</p>
@@ -18,7 +20,9 @@
   </div>
   }
   <div class="grand-total">
-    <h3><span>Grand Total:</span> {{ Total | currency }}</h3>
+    <h3>
+      <span style="font-weight: bold">Grand Total:</span> {{ Total | currency }}
+    </h3>
   </div>
 </div>
 
