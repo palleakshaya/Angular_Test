@@ -54,6 +54,7 @@ export class CartComponent {
   deleteProduct(id: string) {
     this.productsService.removeFromCart(id);
     this.ProductsList = this.productsService.gettingCart();
+    this.calculateGrandTotal();
   }
 
   orders() {
@@ -61,8 +62,13 @@ export class CartComponent {
   }
   removeFromCart(item: any) {
     const idx = this.ProductsList.indexOf(item);
-    return this.ProductsList.splice(idx, 1);
-    this.loaditems();
+    if (idx !== -1) {
+      this.ProductsList.splice(idx, 1);
+      this.productsService.removeFromCart(item.id); // Ensure removal from service
+      this.calculateGrandTotal(); // Recalculate total after removing item
+    }
+    // return
+    // this.loaditems();
   }
   loaditems() {
     this.router.navigate(['cart']);
