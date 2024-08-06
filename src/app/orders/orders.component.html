@@ -1,10 +1,10 @@
 <div class="order-details">
-  <h4>Orders</h4>
+  <h4><span class="bold-span" style="font-weight: bold">Orders</span></h4>
   @for (order of orders; track $index) {
   <div class="each-order">
     <p>Order ID: {{ order.orderId }}</p>
     <p>Order Date: {{ order.date }}</p>
-    <h3>Items</h3>
+    <h3><span class="bold-span" style="font-weight: bold">Items</span></h3>
     <div class="items">
       @for (item of order.items; track $index) {
       <div class="single-item">
@@ -15,7 +15,10 @@
           height="250px"
         />
         <div>
-          <p>{{ item.name }} - Quantity: {{ item.quantity }}</p>
+          <p>
+            <span style="font-weight: bold">{{ item.name }}</span> - Quantity:
+            {{ item.quantity }}
+          </p>
           <p>Total: {{ item.price * item.quantity | currency }}</p>
         </div>
       </div>
