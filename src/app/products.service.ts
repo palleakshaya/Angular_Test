@@ -16,15 +16,30 @@ export class ProductsService {
       (res) => res.json()
     );
   }
+  // addProduct(product: any) {
+  //   // this.movies.push(newMovie);
+  //   // this.CartData.push(product);
+  //   if (this.CartData.find((i: { id: any }) => product.id == i.id)) {
+  //     const idx = this.CartData.indexOf(product);
+  //     product.qty += 1;
+  //   } else {
+  //     this.CartData.push(product);
+  //   }
+  // }
   addProduct(product: any) {
-    // this.movies.push(newMovie);
-    // this.CartData.push(product);
-    if (this.CartData.find((i: { id: any }) => product.id == i.id)) {
-      const idx = this.CartData.indexOf(product);
-      product.qty += 1;
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const existingProductIndex = cart.findIndex(
+      (i: { id: any }) => product.id === i.id
+    );
+
+    if (existingProductIndex !== -1) {
+      cart[existingProductIndex].quantity += 1; // Update quantity if the product is already in the cart
     } else {
-      this.CartData.push(product);
+      product.quantity = 1; // Initialize quantity
+      cart.push(product); // Add new product to cart
     }
+
+    localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
   }
 
   gettingCart() {

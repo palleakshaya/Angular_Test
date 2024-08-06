@@ -43,7 +43,7 @@ export class CartComponent {
     //   this.Products = Product;
     // }
     // console.log(this.ProductsList[0]);
-    this.Products = this.ProductsList[0];
+    //this.Products = this.ProductsList[0];
     this.calculateGrandTotal();
     // this.Products = this.productsService.gettingCart();
   }
