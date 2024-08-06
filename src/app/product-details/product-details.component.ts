@@ -3,11 +3,12 @@ import { ProductsService } from '../products.service';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MatCardModule, CurrencyPipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',
 })

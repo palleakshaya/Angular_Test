@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { ProductsService } from '../products.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-products',
@@ -19,6 +20,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
     FormsModule,
     MatCardModule,
     RouterLink,
+    CurrencyPipe,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',

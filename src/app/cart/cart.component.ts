@@ -30,7 +30,8 @@ export class CartComponent {
     this.Total = this.ProductsList.reduce(
       (total: number, item: { price: string; quantity: number }) => {
         return total + parseFloat(item.price) * item.quantity;
-      }
+      },
+      0
     );
   }
   total() {
@@ -43,6 +44,7 @@ export class CartComponent {
     // }
     // console.log(this.ProductsList[0]);
     this.Products = this.ProductsList[0];
+    this.calculateGrandTotal();
     // this.Products = this.productsService.gettingCart();
   }
   // deleteProduct() {
