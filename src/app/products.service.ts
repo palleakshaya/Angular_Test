@@ -46,7 +46,7 @@ export class ProductsService {
     ).then((res) => res.json());
   }
   getOrdersP(): Promise<any> {
-    return fetch('https://66b0a87f6a693a95b539a6fd.mockapi.io/Orders').then(
+    return fetch('https://66b0acdd6a693a95b539ba20.mockapi.io/Orders').then(
       (res) => res.json()
     );
   }
