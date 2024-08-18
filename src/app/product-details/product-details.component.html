@@ -1,8 +1,8 @@
 <mat-card class="details">
-  <img src="{{ everyProduct.image }}" class="Image" />
+  <img src="{{ everyProduct.imageURL }}" class="Image" />
   <p class="Title">
     Name:
-    {{ everyProduct.name }}
+    {{ everyProduct.title }}
   </p>
 
   <p class="Description">
@@ -15,7 +15,7 @@
     {{ everyProduct.price | currency }}
   </p>
   <p class="Quantity">
-    Quantity:
-    {{ everyProduct.quantity }}
+    Stock:
+    {{ everyProduct.stock }}
   </p>
 </mat-card>

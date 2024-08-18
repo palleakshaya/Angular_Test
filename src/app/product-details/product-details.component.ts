@@ -13,7 +13,7 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './product-details.component.scss',
 })
 export class ProductDetailsComponent {
-  everyProduct: any;
+  everyProduct!: any;
   isLoading: boolean = true;
   msg = '';
 
