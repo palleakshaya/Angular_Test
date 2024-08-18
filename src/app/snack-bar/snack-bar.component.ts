@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-snack-bar',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './snack-bar.component.html',
   styleUrl: './snack-bar.component.scss',
 })

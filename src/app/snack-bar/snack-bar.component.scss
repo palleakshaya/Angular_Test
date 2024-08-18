@@ -1,15 +1,67 @@
+// .snack-bar-container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 0 16px;
+    
+//     span {
+//       flex: 1;
+//     }
+    
+//     button {
+//       margin-left: 8px;
+//     }
+//   }
 .snack-bar-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 16px;
-    
-    span {
-      flex: 1;
+    background-color: black; // Success color
+    color: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .snack-bar-icon {
+    font-size: 24px;
+    margin-right: 12px;
+  }
+  
+  .snack-bar-text {
+    flex: 1;
+  }
+  
+  .snack-bar-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .view-cart-button {
+    margin-left: 8px;
+    background-color: #ffffff; // White background for button
+    color: black; // Match the success color
+    border-radius: 4px;
+    border: 1px solid black; // Border matching the success color
+    padding: 4px 8px;
+    font-weight: bold;
+  
+    &:hover {
+      background-color: #f1f1f1; // Light gray background on hover
     }
-    
-    button {
-      margin-left: 8px;
+  }
+  
+  .close-button {
+    margin-left: 8px;
+    color: #ffffff; // White color for close button
+     background-color: rgba(0, 0, 0, 0.3); // Slightly transparent background
+    border-radius: 4px;
+    border: none;
+    padding: 4px 8px;
+    font-weight: bold;
+  
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5); // Darker background on hover
     }
   }
   

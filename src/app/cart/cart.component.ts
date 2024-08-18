@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
 import { CurrencyPipe } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -20,7 +21,8 @@ export class CartComponent {
     private productsService: ProductsService,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.ProductsList = productsService.CartData;
     this.calculateGrandTotal();
@@ -93,6 +95,11 @@ export class CartComponent {
       .addOrder(orderDetails)
       .then((response) => {
         console.log('Order placed successfully:', response);
+        this.snackBar.open('Order placed successfully!', 'Close', {
+          duration: 2000, // Duration in milliseconds
+          verticalPosition: 'bottom', // Position on the screen
+          horizontalPosition: 'center', // Position on the screen
+        });
         this.router.navigate(['/orders'], { state: { orderDetails } });
       })
       .catch((error) => {

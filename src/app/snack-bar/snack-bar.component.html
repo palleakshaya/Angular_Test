@@ -1,5 +1,12 @@
 <div class="snack-bar-container">
-  <span>Added to cart successfully!</span>
-  <button mat-button (click)="viewCart()">View Cart</button>
-  <button mat-button (click)="close()">Close</button>
+  <mat-icon class="snack-bar-icon">check_circle</mat-icon>
+  <div class="snack-bar-text">
+    <span>Added to cart successfully!</span>
+  </div>
+  <div class="snack-bar-actions">
+    <button mat-button class="view-cart-button" (click)="viewCart()">
+      View Cart
+    </button>
+    <button mat-button class="close-button" (click)="close()">Close</button>
+  </div>
 </div>
