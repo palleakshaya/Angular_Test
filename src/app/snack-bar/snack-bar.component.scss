@@ -1,0 +1,15 @@
+.snack-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    
+    span {
+      flex: 1;
+    }
+    
+    button {
+      margin-left: 8px;
+    }
+  }
+  

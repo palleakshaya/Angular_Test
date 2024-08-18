@@ -9,6 +9,8 @@ import { ProductsService } from '../products.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 import { IBook } from '../products.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -45,15 +47,28 @@ export class ProductsComponent {
   constructor(
     public productsService: ProductsService,
     private route: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    private snackBar: MatSnackBar
   ) {}
   @Output() addItemEvent: EventEmitter<any> = new EventEmitter<any>();
+  // addToCart() {
+  //   this.addItemEvent.emit(this.product);
+  // }
   addToCart() {
-    this.addItemEvent.emit(this.product);
-  }
-  cart() {
     this.productsService.addProduct(this.product);
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      duration: 3000, // Duration in milliseconds
+      verticalPosition: 'bottom', // Position on the screen
+      horizontalPosition: 'center', // Position on the screen
+      panelClass: ['snack-bar-success'],
+    });
   }
+  // this.productsService.addProduct(this.product);
+  // this.snackBar.open('Added to cart successfully!', 'Close', {
+  //   duration: 2000, // Duration in milliseconds
+  //   verticalPosition: 'bottom', // Position on the screen
+  //   horizontalPosition: 'center', // Position on the screen
+  // });
 }
 
 // products = [
