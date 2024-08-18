@@ -9,14 +9,14 @@
       @for (item of order.items; track $index) {
       <div class="single-item">
         <img
-          src="{{ item.image }}"
-          alt="{{ item.name }}"
+          src="{{ item.imageURL }}"
+          alt="{{ item.title }}"
           width="250px"
           height="250px"
         />
         <div>
           <p>
-            <span style="font-weight: bold">{{ item.name }}</span> - Quantity:
+            <span style="font-weight: bold">{{ item.title }}</span> - Quantity:
             {{ item.quantity }}
           </p>
           <p>Total: {{ item.price * item.quantity | currency }}</p>

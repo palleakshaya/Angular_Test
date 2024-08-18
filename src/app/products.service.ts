@@ -1,4 +1,16 @@
 import { Injectable } from '@angular/core';
+export interface IBook {
+  bookId: string;
+  title: string;
+  author: string;
+  price: number;
+  description: string;
+  rating: number;
+  category: string;
+  imageURL: string;
+  stock: number;
+  qty: number;
+}
 
 @Injectable({
   providedIn: 'root',

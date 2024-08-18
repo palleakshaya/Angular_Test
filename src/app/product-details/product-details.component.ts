@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductsService } from '../products.service';
+import { IBook, ProductsService } from '../products.service';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
@@ -13,7 +13,7 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './product-details.component.scss',
 })
 export class ProductDetailsComponent {
-  everyProduct!: any;
+  everyProduct!: IBook;
   isLoading: boolean = true;
   msg = '';
 

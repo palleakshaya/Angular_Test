@@ -1,4 +1,4 @@
-<mat-card class="details">
+<!-- <mat-card class="details">
   <img src="{{ everyProduct.imageURL }}" class="Image" />
   <p class="Title">
     Name:
@@ -18,4 +18,42 @@
     Stock:
     {{ everyProduct.stock }}
   </p>
-</mat-card>
+</mat-card> -->
+
+<div class="container">
+  <div class="image-section">
+    <img src="{{ everyProduct.imageURL }}" alt="Book Cover" />
+  </div>
+  <div class="details-section">
+    <h1>{{ everyProduct.title }}</h1>
+    <p>
+      by <strong>{{ everyProduct.author }}</strong>
+    </p>
+    <p class="rating">Rating: {{ everyProduct.rating }}</p>
+    <p class="price"></p>
+    <p><span>Price: </span>{{ everyProduct.price | currency }}</p>
+    <!-- <span class="discounted-price">Rs. 229</span>
+      <span class="save">Save 61%</span> -->
+
+    <!-- <p class="stock">Only 1 left in stock</p> -->
+    <!-- <p><strong>Binding:</strong> Paperback</p>
+    <p><strong>Condition:</strong> Gently Used</p> -->
+    <div class="buttons">
+      <!-- <button class="add-to-cart" (click)="addToCart()">Add To Cart</button> -->
+      <!-- <button class="buy-now" (click)="buyNow()">Buy Now</button> -->
+      <button class="shortlist">Shortlist</button>
+    </div>
+    <!-- <p class="delivery-info">Delivery within 6-8 business days</p> -->
+    <!-- <div class="delivery-icons">
+      <p>Gently Used</p>
+      <p>Ships In 1-2 Days</p>
+      <p>Original Books</p>
+      <p>Free Bookmarks</p>
+    </div> -->
+    <div class="description">
+      <h2>Description</h2>
+      <p>{{ everyProduct.description }}</p>
+      <!-- <p>New York's skyscrapers and hectic pace are a far cry from...</p> -->
+    </div>
+  </div>
+</div>

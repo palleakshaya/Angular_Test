@@ -1,4 +1,4 @@
-<mat-card class="wholecontainer">
+<!-- <mat-card class="wholecontainer">
   <div class="container">
     <img src="{{ product.imageURL }}" alt="Extraordinary" />
     <div class="headingAndRating">
@@ -17,4 +17,26 @@
       <button mat-button (click)="addToCart()" class="addButton">➕Cart</button>
     </div>
   </div></mat-card
->
+> -->
+<div class="product-container">
+  <img
+    src="{{ product.imageURL }}"
+    alt="Indriyan Book Cover"
+    class="product-image"
+  />
+  <div class="product-details">
+    <div class="title-info">
+      <h2 class="product-title">{{ product.title }}</h2>
+      <button
+        mat-icon-button
+        routerLink="product-details/{{ product.bookId }}"
+        class="info-button"
+      >
+        <mat-icon>info</mat-icon>
+      </button>
+    </div>
+    <p class="product-author">by {{ product.author }}</p>
+    <p class="product-price">{{ product.price | currency }}</p>
+    <button class="cart-button" (click)="addToCart()">+ Cart</button>
+  </div>
+</div>

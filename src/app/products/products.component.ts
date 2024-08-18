@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ProductsService } from '../products.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
-
+import { IBook } from '../products.service';
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -26,15 +26,19 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
-  @Input() id: any;
-  @Input() product: any = {
-    id: '',
-    name: '',
-    description: '',
-    price: '',
-    category: '',
-    image: '',
-    quantity: '',
+  @Input() bookId: any;
+  @Input() product: IBook = {
+    bookId: '1',
+    title: 'Indriyan',
+    author: 'Sreenath Deshagani',
+    price: 7.05,
+    description:
+      'This accelerated story narrative of Ajays search for his Unknown father has a blend of reality and fantasy, with a lot of twists and turns that makes your reading a rollercoaster ride.',
+    rating: 5,
+    category: 'Gothic Fiction',
+    imageURL: 'https://m.media-amazon.com/images/I/5100TBriGTL.jpg',
+    stock: 20,
+    qty: 0,
   };
   isLoading: boolean = true;
   msg = '';
