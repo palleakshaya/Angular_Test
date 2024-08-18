@@ -17,9 +17,9 @@
         <div>
           <p>
             <span style="font-weight: bold">{{ item.title }}</span> - Quantity:
-            {{ item.quantity }}
+            {{ item.qty }}
           </p>
-          <p>Total: {{ item.price * item.quantity | currency }}</p>
+          <p>Total: {{ item.price * item.qty | currency }}</p>
         </div>
       </div>
       }
@@ -28,3 +28,9 @@
   </div>
   }
 </div>
+
+<!-- <div *ngIf="!hasOrders">
+  <p>No orders to display.</p>
+</div> -->
+
+<!-- *ngIf="orders.length > 0; else noOrders" -->
