@@ -96,4 +96,7 @@ export class ProductsService {
     this.orders.push(orderDetails);
     return this.postOrderToApi(orderDetails);
   }
+  clearCart() {
+    localStorage.removeItem('cart');
+  }
 }

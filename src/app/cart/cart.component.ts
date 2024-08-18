@@ -100,6 +100,9 @@ export class CartComponent {
           verticalPosition: 'bottom', // Position on the screen
           horizontalPosition: 'center', // Position on the screen
         });
+        this.productsService.clearCart();
+        this.ProductsList = []; // Clear the local ProductsList
+        this.Total = 0; // Reset the total
         this.router.navigate(['/orders'], { state: { orderDetails } });
       })
       .catch((error) => {
