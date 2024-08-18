@@ -18,9 +18,9 @@ export interface IBook {
 export class ProductsService {
   CartData: any = [];
   //const API = "https://66b0acdd6a693a95b539ba20.mockapi.io/Products"
-  getProductsByid(id: string) {
+  getProductsByid(bookId: string): Promise<IBook> {
     return fetch(
-      `https://66b0acdd6a693a95b539ba20.mockapi.io/Products/${id}`
+      `https://66b0acdd6a693a95b539ba20.mockapi.io/Products/${bookId}`
     ).then((res) => res.json());
   }
   getProducts() {

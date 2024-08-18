@@ -26,7 +26,7 @@ import { IBook } from '../products.service';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
-  @Input() bookId: any;
+  // @Input() bookId: any;
   @Input() product: IBook = {
     bookId: '1',
     title: 'Indriyan',

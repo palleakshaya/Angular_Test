@@ -25,12 +25,13 @@ export class ProductDetailsComponent {
   ) {}
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id') as string; // From URL
+    let bookId = this.route.snapshot.paramMap.get('bookId') as string; // From URL
     this.productsService
-      .getProductsByid(id)
+      .getProductsByid(bookId)
       .then((data) => {
         this.everyProduct = data;
         this.isLoading = false;
+        console.log(this.everyProduct);
         // this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
         //   this.everyProduct.image
         // );

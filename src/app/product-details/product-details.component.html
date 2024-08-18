@@ -30,8 +30,10 @@
       by <strong>{{ everyProduct.author }}</strong>
     </p>
     <p class="rating">Rating: {{ everyProduct.rating }}</p>
-    <p class="price"></p>
+    <!-- <p class="price"></p> -->
     <p><span>Price: </span>{{ everyProduct.price | currency }}</p>
+    <p><span>Quantity: </span>{{ everyProduct.stock | currency }}</p>
+
     <!-- <span class="discounted-price">Rs. 229</span>
       <span class="save">Save 61%</span> -->
 
