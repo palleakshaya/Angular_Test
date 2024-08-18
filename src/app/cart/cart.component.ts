@@ -30,8 +30,8 @@ export class CartComponent {
 
   calculateGrandTotal() {
     this.Total = this.ProductsList.reduce(
-      (total: number, item: { price: string; quantity: number }) => {
-        return total + parseFloat(item.price) * item.quantity;
+      (total: number, item: { price: string; qty: number }) => {
+        return total + parseFloat(item.price) * item.qty;
       },
       0
     );

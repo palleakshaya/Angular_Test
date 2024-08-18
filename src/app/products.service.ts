@@ -41,13 +41,13 @@ export class ProductsService {
   addProduct(product: any) {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const existingProductIndex = cart.findIndex(
-      (i: { id: any }) => product.id === i.id
+      (i: { bookId: any }) => product.bookId === i.bookId
     );
 
     if (existingProductIndex !== -1) {
-      cart[existingProductIndex].quantity += 1; // Update quantity if the product is already in the cart
+      cart[existingProductIndex].qty += 1; // Update quantity if the product is already in the cart
     } else {
-      product.quantity = 1; // Initialize quantity
+      product.qty = 1; // Initialize quantity
       cart.push(product); // Add new product to cart
     }
 

@@ -10,9 +10,9 @@
       <h3>
         <span style="font-weight: bold">{{ cartItem.name }}</span>
       </h3>
-      <p>Quantity : {{ cartItem.quantity }}</p>
+      <p>Quantity : {{ cartItem.qty }}</p>
       <p>price : {{ cartItem.price | currency }}</p>
-      <p>total : {{ cartItem.quantity * +cartItem.price | currency }}</p>
+      <p>total : {{ cartItem.qty * +cartItem.price | currency }}</p>
       <button (click)="removeFromCart(cartItem)" mat-button>
         <span class="material-symbols-outlined">Remove From Cart</span>
       </button>
