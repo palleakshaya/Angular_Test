@@ -5,6 +5,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
 import { CurrencyPipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cart',
@@ -22,7 +24,8 @@ export class CartComponent {
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {
     this.ProductsList = productsService.CartData;
     this.calculateGrandTotal();
@@ -63,15 +66,21 @@ export class CartComponent {
     this.router.navigate([`orders`]);
   }
   removeFromCart(item: any) {
-    const idx = this.ProductsList.indexOf(item);
-    if (idx !== -1) {
-      this.ProductsList.splice(idx, 1);
-      this.productsService.removeFromCart(item.id); // Ensure removal from service
-      this.calculateGrandTotal(); // Recalculate total after removing item
-    }
-    // return
-    // this.loaditems();
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // If the user confirmed
+        const idx = this.ProductsList.indexOf(item);
+        if (idx !== -1) {
+          this.ProductsList.splice(idx, 1); // Remove item from the list
+          this.productsService.removeFromCart(item.id); // Ensure removal from service
+          this.calculateGrandTotal(); // Recalculate total after removing item
+        }
+      }
+    });
   }
+
   loaditems() {
     this.router.navigate(['cart']);
   }
