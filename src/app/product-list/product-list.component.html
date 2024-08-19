@@ -1,9 +1,26 @@
-<div class="product-card">
-  @if (isLoading) {
-  <h1>Loading....</h1>
-  } @for(product of products; track products.id){
-  <app-products [product]="product" (addItemEvent)="addOneProduct($event)" />
-  }
-</div>
-<!-- (deleteItem)="deleteItem($event)"
+<div class="hole">
+  <div class="input">
+    <form [formGroup]="searchForm" class="form">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="search for Books"
+          formControlName="search"
+        />
+      </mat-form-field>
+    </form>
+  </div>
+  <div *ngIf="isLoading" class="loading">Loading books...</div>
+
+  <div *ngIf="!isLoading && noResults" class="no-results">No results found</div>
+
+  <div *ngIf="!isLoading && !noResults" class="product-card">
+    @if (isLoading) {
+    <h1>Loading....</h1>
+    } @for(product of products; track products.id){
+    <app-products [product]="product" (addItemEvent)="addOneProduct($event)" />
+    }
+  </div>
+  <!-- (deleteItem)="deleteItem($event)"
   [id]="movie.id" -->
+</div>

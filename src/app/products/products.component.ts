@@ -44,6 +44,8 @@ export class ProductsComponent {
   };
   isLoading: boolean = true;
   msg = '';
+  filteredProducts: any = [];
+  searchQuery: string = '';
   constructor(
     public productsService: ProductsService,
     private route: ActivatedRoute,
@@ -54,6 +56,7 @@ export class ProductsComponent {
   // addToCart() {
   //   this.addItemEvent.emit(this.product);
   // }
+
   addToCart() {
     this.productsService.addProduct(this.product);
     this.snackBar.openFromComponent(SnackBarComponent, {

@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
 export interface IBook {
   bookId: string;
   title: string;
@@ -17,6 +19,8 @@ export interface IBook {
 })
 export class ProductsService {
   CartData: any = [];
+  constructor(private http: HttpClient) {}
+  // http: any;
   //const API = "https://66b0acdd6a693a95b539ba20.mockapi.io/Products"
   getProductsByid(bookId: string): Promise<IBook> {
     return fetch(
@@ -26,6 +30,18 @@ export class ProductsService {
   getProducts() {
     return fetch('https://66b0acdd6a693a95b539ba20.mockapi.io/Products').then(
       (res) => res.json()
+    );
+  }
+  searchUser(searchTerm: string): Observable<IBook[]> {
+    if (!searchTerm.trim()) {
+      // Return an empty observable if the search term is empty
+      return new Observable<IBook[]>((observer) => {
+        observer.next([]);
+        observer.complete();
+      });
+    }
+    return this.http.get<IBook[]>(
+      `https://66b0acdd6a693a95b539ba20.mockapi.io/Products?search=${searchTerm}`
     );
   }
   // addProduct(product: any) {
