@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { debounceTime, of, switchMap } from 'rxjs';
+import { debounceTime, of, switchMap, catchError, startWith } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 
@@ -54,36 +54,22 @@ export class ProductListComponent {
     this.searchForm
       .get('search')
       ?.valueChanges.pipe(
+        startWith(''),
         debounceTime(300),
-        switchMap((searchTerm) => {
-          console.log('Search term:', searchTerm); // Debugging statement
-          if (!searchTerm) {
-            this.filteredProducts = this.products;
-            this.noResults = false;
-            return of(this.products);
-          }
-          // Otherwise, filter products based on search term
-          return this.productsService.searchUser(searchTerm);
-        })
+        switchMap((searchTerm) =>
+          this.productsService.searchUser(searchTerm).pipe(
+            catchError((error) => {
+              console.log(error);
+              return of([]);
+            })
+          )
+        )
       )
-      .subscribe(
-        (data: IBook[]) => {
-          console.log('Filtered products data:', data); // Debugging statement
-          if (data.length === 0) {
-            this.noResults = true;
-          } else {
-            this.filteredProducts = data;
-            this.noResults = false;
-          }
-          this.isLoading = false;
-        },
-        (error) => {
-          console.error('Error fetching search results:', error); // Error handling
-          this.noResults = true;
-          this.filteredProducts = []; // Clear filtered products on error
-          this.isLoading = false;
-        }
-      );
+      .subscribe((data) => {
+        console.log(data);
+        this.isLoading = false;
+        this.filteredProducts = data;
+      });
     // console.log(data);
     // this.filteredProducts = data;
     // this.noResults = data.length === 0;
