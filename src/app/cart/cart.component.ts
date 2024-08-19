@@ -7,11 +7,11 @@ import { CurrencyPipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [MatCardModule, CurrencyPipe],
+  imports: [MatCardModule, CurrencyPipe, CommonModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })

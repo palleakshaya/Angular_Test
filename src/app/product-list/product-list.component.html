@@ -1,16 +1,15 @@
-<div class="hole">
-  <div class="input">
-    <form [formGroup]="searchForm" class="form">
-      <mat-form-field class="example-full-width">
-        <input
-          matInput
-          placeholder="search for Books"
-          formControlName="search"
-        />
+<div class="container">
+  <div class="search-bar">
+    <form [formGroup]="searchForm" class="search-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Search for Books</mat-label>
+        <input matInput formControlName="search" placeholder="Ex: Love" />
       </mat-form-field>
     </form>
   </div>
-  <div *ngIf="isLoading" class="loading">Loading books...</div>
+  <div *ngIf="isLoading" class="loading">
+    <h3 style="font-weight: bolder">Loading books...</h3>
+  </div>
 
   <div *ngIf="!isLoading && products.length == 0" class="no-results">
     No results found

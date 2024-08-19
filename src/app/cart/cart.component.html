@@ -1,4 +1,4 @@
-<button (click)="placeOrder()" mat-button>
+<button (click)="placeOrder()" *ngIf="ProductsList.length > 0" mat-button>
   <span class="material-symbols-outlined"> Place Order</span>
 </button>
 
