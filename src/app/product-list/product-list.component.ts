@@ -68,7 +68,7 @@ export class ProductListComponent {
       .subscribe((data) => {
         console.log(data);
         this.isLoading = false;
-        this.filteredProducts = data;
+        this.products = data;
       });
     // console.log(data);
     // this.filteredProducts = data;
