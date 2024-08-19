@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API } from './global';
 export interface IBook {
   bookId: string;
   title: string;
@@ -20,22 +21,31 @@ export interface IBook {
 export class ProductsService {
   CartData: any = [];
   constructor(private http: HttpClient) {}
+  // API = 'https://66b0acdd6a693a95b539ba20.mockapi.io';
   // http: any;
   //const API = "https://66b0acdd6a693a95b539ba20.mockapi.io/Products"
+  // getProductsByid(bookId: string): Promise<IBook> {
+  //   return fetch(
+  //     `https://66b0acdd6a693a95b539ba20.mockapi.io/Products/${bookId}`
+  //   ).then((res) => res.json());
+  // }
   getProductsByid(bookId: string): Promise<IBook> {
-    return fetch(
-      `https://66b0acdd6a693a95b539ba20.mockapi.io/Products/${bookId}`
-    ).then((res) => res.json());
+    return new Promise((resolve, reject) => {
+      const product = this.CartData.find(
+        (item: { id: string }) => item.id === bookId
+      );
+      if (product) {
+        resolve(product);
+      } else {
+        reject('Product not found');
+      }
+    });
   }
   getProducts() {
-    return fetch('https://66b0acdd6a693a95b539ba20.mockapi.io/Products').then(
-      (res) => res.json()
-    );
+    return fetch(`${API}/Products`).then((res) => res.json());
   }
   searchUser(searchTerm: string) {
-    return this.http.get<IBook[]>(
-      `https://66b0acdd6a693a95b539ba20.mockapi.io/Products?search=${searchTerm}`
-    );
+    return this.http.get<IBook[]>(`${API}/Products?search=${searchTerm}`);
   }
   // addProduct(product: any) {
   //   // this.movies.push(newMovie);
@@ -74,20 +84,15 @@ export class ProductsService {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
   deleteProduct(id: any) {
-    return fetch(
-      `https://66b0acdd6a693a95b539ba20.mockapi.io/Products/${id} `,
-      {
-        method: 'DELETE',
-      }
-    ).then((res) => res.json());
+    return fetch(`${API}/Products/${id} `, {
+      method: 'DELETE',
+    }).then((res) => res.json());
   }
   getOrdersP(): Promise<any> {
-    return fetch('https://66b0acdd6a693a95b539ba20.mockapi.io/Orders').then(
-      (res) => res.json()
-    );
+    return fetch(`${API}/Orders`).then((res) => res.json());
   }
   postOrderToApi(orderDetails: any): Promise<any> {
-    return fetch('https://66b0acdd6a693a95b539ba20.mockapi.io/Orders', {
+    return fetch(`${API}/Orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
