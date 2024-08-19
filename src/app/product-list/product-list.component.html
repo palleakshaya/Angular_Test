@@ -12,9 +12,11 @@
   </div>
   <div *ngIf="isLoading" class="loading">Loading books...</div>
 
-  <div *ngIf="!isLoading && noResults" class="no-results">No results found</div>
+  <div *ngIf="!isLoading && filteredProducts.length == 0" class="no-results">
+    No results found
+  </div>
 
-  <div *ngIf="!isLoading && !noResults" class="product-card">
+  <div class="product-card">
     <!-- @if (isLoading) {
     <h1>Loading....</h1>} -->
     @for(product of products; track products.id){

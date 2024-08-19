@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 export interface IBook {
   bookId: string;
@@ -32,14 +32,7 @@ export class ProductsService {
       (res) => res.json()
     );
   }
-  searchUser(searchTerm: string): Observable<IBook[]> {
-    if (!searchTerm.trim()) {
-      // Return an empty observable if the search term is empty
-      return new Observable<IBook[]>((observer) => {
-        observer.next([]);
-        observer.complete();
-      });
-    }
+  searchUser(searchTerm: string) {
     return this.http.get<IBook[]>(
       `https://66b0acdd6a693a95b539ba20.mockapi.io/Products?search=${searchTerm}`
     );
