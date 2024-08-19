@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { debounceTime, switchMap } from 'rxjs';
+import { debounceTime, of, switchMap } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 
@@ -60,7 +60,7 @@ export class ProductListComponent {
           if (!searchTerm) {
             this.filteredProducts = this.products;
             this.noResults = false;
-            return [];
+            return of(this.products);
           }
           // Otherwise, filter products based on search term
           return this.productsService.searchUser(searchTerm);
@@ -79,6 +79,8 @@ export class ProductListComponent {
         },
         (error) => {
           console.error('Error fetching search results:', error); // Error handling
+          this.noResults = true;
+          this.filteredProducts = []; // Clear filtered products on error
           this.isLoading = false;
         }
       );
