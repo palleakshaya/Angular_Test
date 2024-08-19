@@ -1,0 +1,36 @@
+<div class="signup-container">
+  <mat-card class="signup-card">
+    <mat-card-header>
+      <mat-card-title>Sign Up</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" [formGroup]="signupForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
+            Invalid email
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+
+        <div class="signup-buttons">
+          <button mat-raised-button color="primary" type="submit">
+            Sign Up
+          </button>
+          <!-- <button mat-button (click)="onLogin()">Login</button> -->
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

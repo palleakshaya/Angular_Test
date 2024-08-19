@@ -24,23 +24,21 @@ export class ProductsService {
   // API = 'https://66b0acdd6a693a95b539ba20.mockapi.io';
   // http: any;
   //const API = "https://66b0acdd6a693a95b539ba20.mockapi.io/Products"
-  // getProductsByid(bookId: string): Promise<IBook> {
-  //   return fetch(
-  //     `https://66b0acdd6a693a95b539ba20.mockapi.io/Products/${bookId}`
-  //   ).then((res) => res.json());
-  // }
   getProductsByid(bookId: string): Promise<IBook> {
-    return new Promise((resolve, reject) => {
-      const product = this.CartData.find(
-        (item: { id: string }) => item.id === bookId
-      );
-      if (product) {
-        resolve(product);
-      } else {
-        reject('Product not found');
-      }
-    });
+    return fetch(`${API}/Products/${bookId}`).then((res) => res.json());
   }
+  // getProductsByid(bookId: string): Promise<IBook> {
+  //   return new Promise((resolve, reject) => {
+  //     const product = this.CartData.find(
+  //       (item: { id: string }) => item.id === bookId
+  //     );
+  //     if (product) {
+  //       resolve(product);
+  //     } else {
+  //       reject('Product not found');
+  //     }
+  //   });
+  // }
   getProducts() {
     return fetch(`${API}/Products`).then((res) => res.json());
   }
