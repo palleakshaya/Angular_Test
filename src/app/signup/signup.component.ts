@@ -38,23 +38,26 @@ export class SignupComponent {
         password: ['', [Validators.required]],
         cpassword: ['', [Validators.required]],
       },
-      { Validators: this.passwordMatchValidator() }
+      { validator: this.passwordMatchValidator }
     );
   }
-  passwordMatchValidator(): Validators {
-    return (formGroup: AbstractControl): { [key: string]: any } | null => {
-      const password = formGroup.get('password');
-      const confirmPassword = formGroup.get('cpassword');
 
-      if (
-        password &&
-        confirmPassword &&
-        password.value !== confirmPassword.value
-      ) {
-        return { passwordMismatch: true };
-      }
+  passwordMatchValidator(
+    formGroup: AbstractControl
+  ): { [key: string]: boolean } | null {
+    const password = formGroup.get('password');
+    const confirmPassword = formGroup.get('cpassword');
+
+    if (
+      password &&
+      confirmPassword &&
+      password.value !== confirmPassword.value
+    ) {
+      confirmPassword.setErrors({ passwordMismatch: true });
+      return { passwordMismatch: true };
+    } else {
       return null;
-    };
+    }
   }
 
   onSubmit() {
