@@ -25,6 +25,7 @@ import { LoginService } from '../login.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  loginError: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -42,6 +43,7 @@ export class LoginComponent {
   }
 
   onLogin() {
+    this.loginError = null;
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
       this.loginService
@@ -51,7 +53,8 @@ export class LoginComponent {
             localStorage.setItem('token', data.token);
             this.router.navigate(['/orders']);
           } else {
-            this.logOut();
+            // this.logOut();
+            this.loginError = 'Invalid credentials. Please try again.';
           }
         })
         .catch((err) => {
