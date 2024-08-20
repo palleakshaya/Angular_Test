@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -25,7 +26,8 @@ export class CartComponent {
     private sanitizer: DomSanitizer,
     private router: Router,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthService
   ) {
     this.ProductsList = productsService.CartData;
     this.calculateGrandTotal();
@@ -93,6 +95,12 @@ export class CartComponent {
   //   };
 
   placeOrder() {
+    if (!this.authService.isLoggedIn) {
+      // Redirect to login page if not logged in
+      localStorage.setItem('redirectUrl', '/orders');
+      this.router.navigate(['/login']);
+      return;
+    }
     const orderDetails = {
       items: this.ProductsList,
       total: this.Total,

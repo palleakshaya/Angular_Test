@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../login.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -26,11 +27,13 @@ import { LoginService } from '../login.service';
 export class LoginComponent {
   loginForm: FormGroup;
   loginError: string | null = null;
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private snackBar: MatSnackBar
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.email]],
@@ -51,10 +54,14 @@ export class LoginComponent {
         .then((data) => {
           if (data.token) {
             localStorage.setItem('token', data.token);
-            this.router.navigate(['/orders']);
+            const redirectUrl =
+              localStorage.getItem('redirectUrl') || '/orders';
+            // if(redirectUrl){
+            this.router.navigate(['redirectUrl']);
+            localStorage.removeItem('redirectUrl');
           } else {
             // this.logOut();
-            this.loginError = 'Invalid credentials. Please try again.';
+            this.showErrorMesssage('Invalid credentials. Please try again.');
           }
         })
         .catch((err) => {
@@ -75,5 +82,13 @@ export class LoginComponent {
   logOut() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
+  }
+  showErrorMesssage(message: string) {
+    this.errorMessage = message; // Set error message
+    this.snackBar.open(message, 'Close', {
+      duration: 3000, // Duration in milliseconds
+      verticalPosition: 'bottom', // Position on the screen
+      horizontalPosition: 'center', // Position on the screen
+    });
   }
 }

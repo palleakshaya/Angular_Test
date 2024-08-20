@@ -24,14 +24,13 @@
           >
         </mat-form-field>
 
-        <div *ngIf="loginError" class="error-message">
-          {{ loginError }}
-        </div>
-
         <div class="login-buttons">
           <button mat-raised-button color="primary" type="submit">Login</button>
           <button mat-button (click)="onSignup()">Sign Up</button>
         </div>
+        <!-- <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div> -->
       </form>
     </mat-card-content>
   </mat-card>

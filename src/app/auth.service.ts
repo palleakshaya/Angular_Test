@@ -10,8 +10,9 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    const token = this.getToken();
-    // Add token validation logic here if needed
-    return !!token;
+    // const token = this.getToken();
+    // // Add token validation logic here if needed
+    // return !!token;
+    return !!localStorage.getItem('token');
   }
 }
