@@ -1,4 +1,4 @@
-<div *ngIf="ProductsList.length === 0" class="empty-cart-message">
+<!-- <div *ngIf="ProductsList.length === 0" class="empty-cart-message">
   Nothing in the cart
 </div>
 <button (click)="placeOrder()" *ngIf="ProductsList.length > 0" mat-button>
@@ -16,8 +16,17 @@
       <p>Quantity : {{ cartItem.qty }}</p>
       <p>price : {{ cartItem.price | currency }}</p>
       <p>total : {{ cartItem.qty * +cartItem.price | currency }}</p>
-      <button (click)="removeFromCart(cartItem)" mat-button>
-        <span class="material-symbols-outlined">Remove From Cart</span>
+      <button
+        mat-icon-button
+        color="black"
+        class="wishlist"
+        (click)="removeFromCart(cartItem)"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="delete"
+        ></mat-icon>
       </button>
     </div>
   </div>
@@ -27,29 +36,49 @@
       <span style="font-weight: bold">Grand Total:</span> {{ Total | currency }}
     </h3>
   </div>
-</div>
+</div> -->
 
-<!-- <mat-card appearance="outlined" class="card">
-  <mat-card-content>
-    <div class="outer">
-      <div class="main">
-        <img src="{{ Products.image }}" alt="" />
-        <div class="title">
-          <h2>{{ Products.name }}</h2>
-        </div>
-        <div class="price">
-          <p>{{ Products.description }}</p>
-        </div>
-        <button mat-raised-button (click)="deleteProduct(Products.id)">
-          delete
+<div class="container">
+  <!-- Empty Cart Message -->
+  <div *ngIf="ProductsList.length === 0" class="empty-cart-message">
+    Nothing in the cart
+  </div>
+
+  <!-- Place Order Button -->
+  <button
+    (click)="placeOrder()"
+    *ngIf="ProductsList.length > 0"
+    mat-raised-button
+    color="primary"
+  >
+    <mat-icon>shopping_cart</mat-icon>
+    Place Order
+  </button>
+
+  <!-- Cart Items -->
+  <div *ngIf="ProductsList.length > 0" class="cart-items">
+    <div
+      *ngFor="let cartItem of ProductsList; track: $index"
+      class="product-card"
+    >
+      <div class="image-section">
+        <img [src]="cartItem.imageURL" alt="Book Cover" />
+      </div>
+      <div class="details-section">
+        <h3>{{ cartItem.name }}</h3>
+        <p class="quantity">Quantity: {{ cartItem.qty }}</p>
+        <p class="price">Price: {{ cartItem.price | currency }}</p>
+        <p class="total">
+          Total: {{ cartItem.qty * cartItem.price | currency }}
+        </p>
+        <button mat-icon-button color="warn" (click)="removeFromCart(cartItem)">
+          <mat-icon>delete</mat-icon>
         </button>
       </div>
-
-      <div class="cost">
-        <h1>Quantity:{{ Products.quantity }}</h1>
-        <h1>{{ Products.price }} * {{ Products.quantity }}</h1>
-        <button mat-raised-button (click)="orders()">Buy</button>
-      </div>
     </div>
-  </mat-card-content>
-</mat-card> -->
+    <!-- Grand Total -->
+    <div class="grand-total">
+      <h3>Grand Total: {{ Total | currency }}</h3>
+    </div>
+  </div>
+</div>

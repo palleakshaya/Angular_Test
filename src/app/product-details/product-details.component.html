@@ -29,7 +29,7 @@
     <p>
       by <strong>{{ everyProduct.author }}</strong>
     </p>
-    <p class="rating">Rating: {{ everyProduct.rating }}</p>
+    <p class="rating">⭐ {{ everyProduct.rating }}</p>
     <!-- <p class="price"></p> -->
     <p><span>Price: </span>{{ everyProduct.price | currency }}</p>
     <p><span>Quantity: </span>{{ everyProduct.stock }}</p>
@@ -43,7 +43,14 @@
     <div class="buttons">
       <!-- <button class="add-to-cart" (click)="addToCart()">Add To Cart</button> -->
       <!-- <button class="buy-now" (click)="buyNow()">Buy Now</button> -->
-      <button class="shortlist">Shortlist</button>
+      <button
+        mat-icon-button
+        color="primary"
+        class="wishlist"
+        (click)="addToFavourites()"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
     </div>
     <!-- <p class="delivery-info">Delivery within 6-8 business days</p> -->
     <!-- <div class="delivery-icons">

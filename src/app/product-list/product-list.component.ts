@@ -15,6 +15,7 @@ import { debounceTime, of, switchMap, catchError, startWith } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-product-list',
@@ -28,6 +29,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     CommonModule,
     MatProgressSpinnerModule,
+    MatIconModule,
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',

@@ -1,0 +1,30 @@
+<!-- <div class="container">
+  <div *ngIf="favoriteProducts.length === 0">
+    <p>No favorites added yet.</p>
+  </div>
+
+  <div *ngFor="let product of favoriteProducts" class="product-card">
+    <div class="image-section">
+      <img src="{{ product.imageURL }}" alt="Book Cover" />
+    </div>
+    <div>{{ product.title }}</div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div *ngIf="favoriteProducts.length === 0">
+    <p>No favorites added yet.</p>
+  </div>
+
+  <div *ngFor="let product of favoriteProducts" class="product-card">
+    <div class="image-section">
+      <img [src]="product.imageURL" alt="Book Cover" />
+    </div>
+    <div class="details-section">
+      <h3>{{ product.title }}</h3>
+      <p class="author">by {{ product.author }}</p>
+      <p class="price">{{ product.price | currency }}</p>
+      <p class="quantity">{{ product.stock }} books are available</p>
+    </div>
+  </div>
+</div>

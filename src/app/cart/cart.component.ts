@@ -2,17 +2,33 @@ import { Component, Input } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatCardModule } from '@angular/material/card';
+import { MatCard, MatCardModule } from '@angular/material/card';
 import { CurrencyPipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
+import {
+  MatButton,
+  MatButtonModule,
+  MatIconButton,
+} from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [MatCardModule, CurrencyPipe, CommonModule],
+  imports: [
+    MatCardModule,
+    CurrencyPipe,
+    CommonModule,
+    MatIconButton,
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule,
+  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
