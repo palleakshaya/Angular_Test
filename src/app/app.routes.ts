@@ -33,7 +33,7 @@ export const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent,
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
   },
   { path: 'signup', component: SignupComponent },
 ];

@@ -5,11 +5,12 @@ import { AuthService } from './auth.service';
 export const authGuard: CanActivateFn = (route, state) => {
   const router: Router = inject(Router);
 
-  const auth = JSON.parse(localStorage.getItem('token') ?? 'false') as boolean;
+  const auth = localStorage.getItem('token');
 
   if (!auth) {
-    router.navigate(['/orders']);
+    router.navigate(['/login']);
+    return false;
   }
 
-  return auth;
+  return true;
 };

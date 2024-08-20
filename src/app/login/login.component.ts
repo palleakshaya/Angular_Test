@@ -42,19 +42,35 @@ export class LoginComponent {
   }
 
   onLogin() {
-    console.log(this.loginForm.value);
-    this.loginService.login(this.loginForm.value).then((data) => {
-      localStorage.setItem('token', data.token);
-      this.router.navigate(['/products']);
-    });
-    // if (this.loginForm.valid) {
-    //   // Perform login logic here
-    //   // Redirect to dashboard or other page
-    //   this.router.navigate(['/products']);
-    // }
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
+      this.loginService
+        .login(this.loginForm.value)
+        .then((data) => {
+          if (data.token) {
+            localStorage.setItem('token', data.token);
+            this.router.navigate(['/orders']);
+          } else {
+            this.logOut();
+          }
+        })
+        .catch((err) => {
+          console.log('Login Failed', err);
+        });
+    }
   }
+  // if (this.loginForm.valid) {
+  //   // Perform login logic here
+  //   // Redirect to dashboard or other page
+  //   this.router.navigate(['/products']);
+  // }
 
   onSignup() {
     this.router.navigate(['/signup']);
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }
