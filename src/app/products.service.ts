@@ -40,7 +40,7 @@ export class ProductsService {
   //   });
   // }
   getProducts() {
-    return fetch(`${API}/Products`).then((res) => res.json());
+    return fetch(`${API}/products`).then((res) => res.json());
   }
   searchUser(searchTerm: string) {
     return this.http.get<IBook[]>(`${API}/Products?search=${searchTerm}`);

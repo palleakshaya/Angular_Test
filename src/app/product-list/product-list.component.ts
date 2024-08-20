@@ -83,6 +83,7 @@ export class ProductListComponent {
         this.products = data;
         this.filteredProducts = data;
         this.isLoading = false;
+        console.log(this.products);
       })
       .catch(() => {
         this.isLoading = false;

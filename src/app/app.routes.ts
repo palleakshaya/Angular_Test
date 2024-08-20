@@ -14,6 +14,8 @@ export const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
+  { path: 'login', component: LoginComponent },
+
   {
     path: 'products',
     children: [
@@ -33,6 +35,5 @@ export const routes: Routes = [
     component: OrdersComponent,
     // canActivate: [authGuard],
   },
-  { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
 ];
