@@ -7,11 +7,11 @@
       <form (ngSubmit)="onSubmit()" [formGroup]="signupForm">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" type="email" required />
-          <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+          <input matInput formControlName="username" type="email" required />
+          <mat-error *ngIf="signupForm.get('username')?.hasError('required')">
             Email is required
           </mat-error>
-          <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
+          <mat-error *ngIf="signupForm.get('username')?.hasError('email')">
             Invalid email
           </mat-error>
         </mat-form-field>

@@ -32,7 +32,7 @@ export class LoginComponent {
     private loginService: LoginService
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
   }
@@ -45,6 +45,7 @@ export class LoginComponent {
     console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).then((data) => {
       localStorage.setItem('token', data.token);
+      this.router.navigate(['/products']);
     });
     // if (this.loginForm.valid) {
     //   // Perform login logic here

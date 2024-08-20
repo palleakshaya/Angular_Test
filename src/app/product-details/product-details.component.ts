@@ -25,7 +25,8 @@ export class ProductDetailsComponent {
   ) {}
 
   ngOnInit() {
-    let bookId = this.route.snapshot.paramMap.get('bookId') as string; // From URL
+    let bookId = this.route.snapshot.paramMap.get('id') as string; // From URL
+    console.log(bookId);
     this.productsService
       .getProductsByid(bookId)
       .then((data) => {

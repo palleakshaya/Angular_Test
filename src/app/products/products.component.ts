@@ -28,7 +28,7 @@ import { SnackBarComponent } from '../snack-bar/snack-bar.component';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
-  // @Input() bookId: any;
+  @Input() bookId: any;
   @Input() product: IBook = {
     bookId: '1',
     title: 'Indriyan',
@@ -42,6 +42,7 @@ export class ProductsComponent {
     stock: 20,
     qty: 0,
   };
+
   isLoading: boolean = true;
   msg = '';
   filteredProducts: any = [];

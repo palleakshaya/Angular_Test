@@ -19,7 +19,11 @@
     <!-- @if (isLoading) {
     <h1>Loading....</h1>} -->
     @for(product of products; track products.id){
-    <app-products [product]="product" (addItemEvent)="addOneProduct($event)" />
+    <app-products
+      [bookId]="product.bookId"
+      [product]="product"
+      (addItemEvent)="addOneProduct($event)"
+    />
     }
   </div>
   <!-- (deleteItem)="deleteItem($event)"

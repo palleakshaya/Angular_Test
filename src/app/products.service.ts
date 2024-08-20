@@ -24,8 +24,21 @@ export class ProductsService {
   // API = 'https://66b0acdd6a693a95b539ba20.mockapi.io';
   // http: any;
   //const API = "https://66b0acdd6a693a95b539ba20.mockapi.io/Products"
-  getProductsByid(bookId: string): Promise<IBook> {
-    return fetch(`${API}/Products/${bookId}`).then((res) => res.json());
+  // getProductsByid(bookId: string): Promise<IBook> {
+  //   return fetch(`${API}/products/${bookId}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'x-auth-token': localStorage.getItem('token') as string,
+  //     },
+  //   }).then((res) => {
+  //     if (res.status != 200) {
+  //       throw res.json();
+  //     }
+  //     return res.json();
+  //   });
+  // }
+  getProductsByid(id: string): Promise<IBook> {
+    return fetch(`${API}/products/${id}`).then((res) => res.json());
   }
   // getProductsByid(bookId: string): Promise<IBook> {
   //   return new Promise((resolve, reject) => {
@@ -87,10 +100,10 @@ export class ProductsService {
     }).then((res) => res.json());
   }
   getOrdersP(): Promise<any> {
-    return fetch(`${API}/Orders`).then((res) => res.json());
+    return fetch(`${API}/orders`).then((res) => res.json());
   }
   postOrderToApi(orderDetails: any): Promise<any> {
-    return fetch(`${API}/Orders`, {
+    return fetch(`${API}/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
