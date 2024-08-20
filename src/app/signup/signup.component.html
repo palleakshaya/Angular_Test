@@ -23,6 +23,18 @@
             Password is required
           </mat-error>
         </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            matInput
+            formControlName="cpassword"
+            type="password"
+            required
+          />
+          <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+            Please Confirm Your Password
+          </mat-error>
+        </mat-form-field>
 
         <div class="signup-buttons">
           <button mat-raised-button color="primary" type="submit">

@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../login.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -25,19 +26,31 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginService: LoginService
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      // Perform login logic here
-      // Redirect to dashboard or other page
-      this.router.navigate(['/products']);
-    }
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  onLogin() {
+    console.log(this.loginForm.value);
+    this.loginService.login(this.loginForm.value).then((data) => {
+      localStorage.setItem('token', data.token);
+    });
+    // if (this.loginForm.valid) {
+    //   // Perform login logic here
+    //   // Redirect to dashboard or other page
+    //   this.router.navigate(['/products']);
+    // }
   }
 
   onSignup() {
