@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
+  ValidatorFn,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -30,11 +32,29 @@ export class SignupComponent {
   signupForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {
-    this.signupForm = this.fb.group({
-      username: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      cpassword: ['', [Validators.required]],
-    });
+    this.signupForm = this.fb.group(
+      {
+        username: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required]],
+        cpassword: ['', [Validators.required]],
+      },
+      { Validators: this.passwordMatchValidator() }
+    );
+  }
+  passwordMatchValidator(): Validators {
+    return (formGroup: AbstractControl): { [key: string]: any } | null => {
+      const password = formGroup.get('password');
+      const confirmPassword = formGroup.get('cpassword');
+
+      if (
+        password &&
+        confirmPassword &&
+        password.value !== confirmPassword.value
+      ) {
+        return { passwordMismatch: true };
+      }
+      return null;
+    };
   }
 
   onSubmit() {

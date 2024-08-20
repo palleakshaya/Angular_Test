@@ -31,8 +31,14 @@
     </p>
     <p class="rating">⭐ {{ everyProduct.rating }}</p>
     <!-- <p class="price"></p> -->
-    <p><span>Price: </span>{{ everyProduct.price | currency }}</p>
-    <p><span>Quantity: </span>{{ everyProduct.stock }}</p>
+    <p>
+      <span style="font-weight: bold">{{ everyProduct.price | currency }}</span>
+    </p>
+    <p>
+      <span style="font-weight: bold"
+        >{{ everyProduct.stock }} books are available!
+      </span>
+    </p>
 
     <!-- <span class="discounted-price">Rs. 229</span>
       <span class="save">Save 61%</span> -->
@@ -44,12 +50,13 @@
       <!-- <button class="add-to-cart" (click)="addToCart()">Add To Cart</button> -->
       <!-- <button class="buy-now" (click)="buyNow()">Buy Now</button> -->
       <button
-        mat-icon-button
+        mat-input
         color="primary"
         class="wishlist"
         (click)="addToFavourites()"
       >
-        <mat-icon>favorite</mat-icon>
+        Add To favorites
+        <!-- <mat-icon>favorite</mat-icon> -->
       </button>
     </div>
     <!-- <p class="delivery-info">Delivery within 6-8 business days</p> -->
@@ -59,6 +66,11 @@
       <p>Original Books</p>
       <p>Free Bookmarks</p>
     </div> -->
+    <div class="category">
+      <h2>Category</h2>
+      <p>{{ everyProduct.category }}</p>
+      <!-- <p>New York's skyscrapers and hectic pace are a far cry from...</p> -->
+    </div>
     <div class="description">
       <h2>Description</h2>
       <p>{{ everyProduct.description }}</p>

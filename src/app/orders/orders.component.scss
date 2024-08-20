@@ -1,15 +1,52 @@
-.items{
-    display: flex;
-    gap: 2rem;
+// .items{
+//     display: flex;
+//     gap: 2rem;
+// }
+// .single-item{
+//     display: flex;
+//     flex-direction: column;
+//     gap: 2rem;
+// }
+// .each-order{
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+//     height :500px;
+// }/* Importing the "Great Vibes" font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.order-success-container {
+  background-color: #fff8dc; /* Light gold background */
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  max-width: 600px;
+  margin: 50px auto; /* Centered horizontally */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 1s ease-in-out;
 }
-.single-item{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+
+.order-success-message {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5em;
+  color: indianred; /* Deep red color */
+  margin: 0;
 }
-.each-order{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height :500px;
+
+.order-success-subtext {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2em;
+  color: #555;
+  margin-top: 15px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
