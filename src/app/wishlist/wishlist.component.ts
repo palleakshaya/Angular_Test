@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IBook, ProductsService } from '../products.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule, MatIconButton],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.scss',
 })
@@ -34,5 +36,10 @@ export class WishlistComponent {
       this.isLoading = false;
       this.msg = 'No favorites found';
     }
+  }
+  removeFromWishlist(product: IBook) {
+    this.favoriteProducts = this.favoriteProducts.filter(
+      (item) => item.bookId !== product.bookId
+    );
   }
 }

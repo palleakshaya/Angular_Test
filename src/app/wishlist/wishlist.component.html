@@ -25,6 +25,13 @@
       <p class="author">by {{ product.author }}</p>
       <p class="price">{{ product.price | currency }}</p>
       <p class="quantity">{{ product.stock }} books are available</p>
+      <button
+        mat-icon-button
+        color="black"
+        (click)="removeFromWishlist(product)"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
     </div>
   </div>
 </div>

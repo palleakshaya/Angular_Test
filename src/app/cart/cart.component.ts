@@ -25,7 +25,6 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatIconButton,
     MatButtonModule,
-    MatCardModule,
     MatDividerModule,
     MatIconModule,
   ],
