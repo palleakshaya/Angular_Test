@@ -1,8 +1,11 @@
+<div *ngIf="ProductsList.length === 0" class="empty-cart-message">
+  Nothing in the cart
+</div>
 <button (click)="placeOrder()" *ngIf="ProductsList.length > 0" mat-button>
   <span class="material-symbols-outlined"> Place Order</span>
 </button>
 
-<div class="whole-page">
+<div *ngIf="ProductsList.length > 0" class="whole-page">
   @for(cartItem of ProductsList ; track $index){
   <div class="container">
     <img src="{{ cartItem.imageURL }}" alt="" />

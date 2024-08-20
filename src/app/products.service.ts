@@ -56,7 +56,7 @@ export class ProductsService {
     return fetch(`${API}/products`).then((res) => res.json());
   }
   searchUser(searchTerm: string) {
-    return this.http.get<IBook[]>(`${API}/Products?search=${searchTerm}`);
+    return this.http.get<IBook[]>(`${API}/products?search=${searchTerm}`);
   }
   // addProduct(product: any) {
   //   // this.movies.push(newMovie);

@@ -8,7 +8,8 @@
     </form>
   </div>
   <div *ngIf="isLoading" class="loading">
-    <h3 style="font-weight: bolder">Loading books...</h3>
+    <!-- <h3 style="font-weight: bolder">Loading books...</h3> -->
+    <mat-spinner></mat-spinner>
   </div>
 
   <div *ngIf="!isLoading && products.length == 0" class="no-results">
