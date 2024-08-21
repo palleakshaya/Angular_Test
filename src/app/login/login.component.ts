@@ -54,11 +54,12 @@ export class LoginComponent {
         .then((data) => {
           if (data.token) {
             localStorage.setItem('token', data.token);
-            const redirectUrl =
-              localStorage.getItem('redirectUrl') || '/orders';
-            // if(redirectUrl){
-            this.router.navigate(['redirectUrl']);
-            localStorage.removeItem('redirectUrl');
+            this.router.navigate(['/products']);
+            // const redirectUrl =
+            //   localStorage.getItem('redirectUrl') || '/orders';
+            // // if(redirectUrl){
+            // this.router.navigate(['redirectUrl']);
+            // localStorage.removeItem('redirectUrl');
           } else {
             // this.logOut();
             this.showErrorMesssage('Invalid credentials. Please try again.');

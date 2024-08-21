@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IBook, ProductsService } from '../products.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-wishlist',
@@ -15,7 +16,10 @@ export class WishlistComponent {
   favoriteProducts: IBook[] = [];
   isLoading: boolean = true;
   msg = '';
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -41,5 +45,10 @@ export class WishlistComponent {
     this.favoriteProducts = this.favoriteProducts.filter(
       (item) => item.bookId !== product.bookId
     );
+    this.snackBar.open('Removed from wishlist', 'Close', {
+      duration: 2000, // Duration the snackbar is displayed
+      verticalPosition: 'bottom', // Position on the screen
+      horizontalPosition: 'center', // Position on the screen
+    });
   }
 }
