@@ -132,6 +132,7 @@ export class CartComponent {
           verticalPosition: 'bottom', // Position on the screen
           horizontalPosition: 'center', // Position on the screen
         });
+        this.storeOrderHistory(orderDetails);
         this.productsService.clearCart();
         this.ProductsList = []; // Clear the local ProductsList
         this.Total = 0; // Reset the total
@@ -141,6 +142,12 @@ export class CartComponent {
         console.error('Error placing order:', error);
       });
   }
+  storeOrderHistory(orderDetails: any) {
+    let orderHistory = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+    orderHistory.push(orderDetails);
+    localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+  }
+
   id: number = 1;
   generateOrderId() {
     return (this.id += 1);

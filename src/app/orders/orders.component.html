@@ -34,11 +34,28 @@
 </div> -->
 
 <!-- *ngIf="orders.length > 0; else noOrders" -->
-<div class="order-success-container">
+<!-- <div class="order-success-container">
   <h1 class="order-success-message">
     Thank you for your purchase! Your order has been placed successfully🎉🎊.
   </h1>
   <p class="order-success-subtext">
     You will receive a confirmation email shortly with your order details.
   </p>
+</div> -->
+<div class="order-history">
+  <h2>Your Order History</h2>
+  <div *ngIf="orderHistory.length === 0">
+    <p>No orders found.</p>
+  </div>
+  <div *ngFor="let order of orderHistory" class="order-card">
+    <!-- <p>Order ID: {{ order.orderId }}</p> -->
+    <p>Order Date: {{ order.date }}</p>
+    <h3>Items</h3>
+    <div *ngFor="let item of order.items" class="item-card">
+      <img [src]="item.imageURL" alt="{{ item.title }}" width="100" />
+      <p>{{ item.title }} - Quantity: {{ item.qty }}</p>
+      <p>Total: {{ item.price * item.qty | currency }}</p>
+    </div>
+    <p>Grand Total: {{ order.total | currency }}</p>
+  </div>
 </div>
