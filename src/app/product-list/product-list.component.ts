@@ -85,9 +85,9 @@ export class ProductListComponent {
       .getProducts()
       .then((data: any) => {
         this.products = data;
-        this.filteredProducts = data;
+        // this.filteredProducts = data;
         this.isLoading = false;
-        console.log(this.products);
+        // console.log(this.products);
       })
       .catch(() => {
         this.isLoading = false;

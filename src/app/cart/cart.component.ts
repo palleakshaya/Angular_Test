@@ -112,7 +112,7 @@ export class CartComponent {
   placeOrder() {
     if (!this.authService.isLoggedIn) {
       // Redirect to login page if not logged in
-      localStorage.setItem('redirectUrl', '/cart');
+      //localStorage.setItem('redirectUrl', '/cart');
       this.router.navigate(['/login']);
       return;
     }

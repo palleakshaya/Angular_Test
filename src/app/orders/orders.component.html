@@ -53,8 +53,10 @@
     <h3>Items</h3>
     <div *ngFor="let item of order.items" class="item-card">
       <img [src]="item.imageURL" alt="{{ item.title }}" width="100" />
-      <p>{{ item.title }} - Quantity: {{ item.qty }}</p>
-      <p>Total: {{ item.price * item.qty | currency }}</p>
+      <div class="title-price">
+        <p>{{ item.title }} - Quantity: {{ item.qty }}</p>
+        <p>Total: {{ item.price * item.qty | currency }}</p>
+      </div>
     </div>
     <p>Grand Total: {{ order.total | currency }}</p>
   </div>

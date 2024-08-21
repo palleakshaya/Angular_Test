@@ -56,6 +56,7 @@ export class ProductsService {
     return fetch(`${API}/products`).then((res) => res.json());
   }
   searchUser(searchTerm: string) {
+    console.log('search Infrontend:', searchTerm);
     return this.http.get<IBook[]>(`${API}/products?search=${searchTerm}`);
   }
   // addProduct(product: any) {
