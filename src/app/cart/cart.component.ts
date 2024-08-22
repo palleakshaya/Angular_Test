@@ -110,7 +110,10 @@ export class CartComponent {
   //   };
 
   placeOrder() {
-    if (!this.authService.isLoggedIn) {
+    if (!this.authService.isLoggedIn()) {
+      this.snackBar.open('Please log in to place an order', 'Close', {
+        duration: 4000,
+      });
       // Redirect to login page if not logged in
       //localStorage.setItem('redirectUrl', '/cart');
       this.router.navigate(['/login']);
