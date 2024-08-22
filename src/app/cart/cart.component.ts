@@ -125,25 +125,26 @@ export class CartComponent {
       orderId: this.generateOrderId(),
       date: new Date().toLocaleString(),
     };
+    this.router.navigate(['/address-details'], { state: { orderDetails } });
 
-    this.productsService
-      .addOrder(orderDetails)
-      .then((response) => {
-        console.log('Order placed successfully:', response);
-        this.snackBar.open('Order placed successfully!', 'Close', {
-          duration: 2000, // Duration in milliseconds
-          verticalPosition: 'bottom', // Position on the screen
-          horizontalPosition: 'center', // Position on the screen
-        });
-        this.storeOrderHistory(orderDetails);
-        this.productsService.clearCart();
-        this.ProductsList = []; // Clear the local ProductsList
-        this.Total = 0; // Reset the total
-        this.router.navigate(['/orders'], { state: { orderDetails } });
-      })
-      .catch((error) => {
-        console.error('Error placing order:', error);
-      });
+    // this.productsService
+    //   .addOrder(orderDetails)
+    //   .then((response) => {
+    //     console.log('Order placed successfully:', response);
+    //     this.snackBar.open('Order placed successfully!', 'Close', {
+    //       duration: 2000, // Duration in milliseconds
+    //       verticalPosition: 'bottom', // Position on the screen
+    //       horizontalPosition: 'center', // Position on the screen
+    //     });
+    //     this.storeOrderHistory(orderDetails);
+    //     this.productsService.clearCart();
+    //     this.ProductsList = []; // Clear the local ProductsList
+    //     this.Total = 0; // Reset the total
+    //     this.router.navigate(['/orders'], { state: { orderDetails } });
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error placing order:', error);
+    //   });
   }
   storeOrderHistory(orderDetails: any) {
     let orderHistory = JSON.parse(localStorage.getItem('orderHistory') || '[]');

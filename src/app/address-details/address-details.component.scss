@@ -1,0 +1,43 @@
+/* Overall container styling */
+.address-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f5f5f5; /* Light grey background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Heading styling */
+  .address-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Dark grey for better readability */
+  }
+  
+  /* Form styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between form fields */
+  }
+  
+  /* Angular Material form field styling */
+  mat-form-field {
+    width: 100%;
+  }
+  
+  /* Button styling */
+  button {
+    align-self: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px; /* Slightly rounded corners */
+  }
+  
+  /* Error message styling */
+  mat-error {
+    color: #d32f2f; /* Red color for error messages */
+    font-size: 12px; /* Smaller font size for error messages */
+  }
+  

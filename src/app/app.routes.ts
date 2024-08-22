@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
 import { SignupComponent } from './signup/signup.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { AddressDetailsComponent } from './address-details/address-details.component';
 
 export const routes: Routes = [
   {
@@ -38,4 +39,5 @@ export const routes: Routes = [
   },
   { path: 'signup', component: SignupComponent },
   { path: 'wishlist', component: WishlistComponent },
+  { path: 'address-details', component: AddressDetailsComponent },
 ];
