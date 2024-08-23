@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -24,12 +25,15 @@ import { NgModule } from '@angular/core';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
 export class SignupComponent {
   signupForm: FormGroup;
+  hidePassword: boolean = true;
+  hideConfirmPassword: boolean = true;
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.signupForm = this.fb.group(
@@ -74,6 +78,13 @@ export class SignupComponent {
       //   }
       // });
     }
+  }
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
+
+  toggleConfirmPasswordVisibility() {
+    this.hideConfirmPassword = !this.hideConfirmPassword;
   }
 
   // onLogin() {

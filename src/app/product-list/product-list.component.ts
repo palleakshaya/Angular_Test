@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { AddProductComponent } from '../add-product/add-product.component';
 
 @Component({
   selector: 'app-product-list',
@@ -43,7 +45,8 @@ export class ProductListComponent {
   noResults: boolean = false;
   constructor(
     public productsService: ProductsService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
   ) {
     this.searchForm = this.fb.group({
       search: '',
@@ -102,5 +105,10 @@ export class ProductListComponent {
   //   console.log(product);
   //   this.productsService.addingCart(product);
   //   //    this.route.navigate([`cart/${product.id}`]);
+  // }
+  // openAddProductDialog(): void {
+  //   this.dialog.open(AddProductDialogComponent, {
+  //     width: '400px'
+  //   });
   // }
 }

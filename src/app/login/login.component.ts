@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -20,6 +21,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     CommonModule,
+    MatIconModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -28,6 +30,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   loginError: string | null = null;
   errorMessage: string = '';
+  hidePassword: boolean = true;
 
   constructor(
     private fb: FormBuilder,
@@ -91,5 +94,8 @@ export class LoginComponent {
       verticalPosition: 'bottom', // Position on the screen
       horizontalPosition: 'center', // Position on the screen
     });
+  }
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
   }
 }
