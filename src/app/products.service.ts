@@ -108,6 +108,7 @@ export class ProductsService {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('token') as string,
       },
       body: JSON.stringify(orderDetails),
     }).then((response) => {
