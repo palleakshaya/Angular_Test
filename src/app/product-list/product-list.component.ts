@@ -17,7 +17,8 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
-import { AddProductComponent } from '../add-product/add-product.component';
+// import { AddProductComponent } from '../add-product/add-product.component';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-product-list',
@@ -32,6 +33,7 @@ import { AddProductComponent } from '../add-product/add-product.component';
     CommonModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatPaginator,
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
@@ -43,6 +45,9 @@ export class ProductListComponent {
   msg = '';
   filteredProducts: any[] = [];
   noResults: boolean = false;
+  // pageSize = 10;
+  // currentPage = 0;
+  // paginatedProducts: any[] = [];
   constructor(
     public productsService: ProductsService,
     private fb: FormBuilder,
@@ -110,5 +115,17 @@ export class ProductListComponent {
   //   this.dialog.open(AddProductDialogComponent, {
   //     width: '400px'
   //   });
+  // }
+
+  // updatePaginatedProducts() {
+  //   const startIndex = this.currentPage * this.pageSize;
+  //   const endIndex = startIndex + this.pageSize;
+  //   this.paginatedProducts = this.products.slice(startIndex, endIndex);
+  // }
+
+  // onPageChange(event: PageEvent) {
+  //   this.pageSize = event.pageSize;
+  //   this.currentPage = event.pageIndex;
+  //   this.updatePaginatedProducts();
   // }
 }

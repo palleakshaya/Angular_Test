@@ -1,22 +1,12 @@
 <div class="container">
-  <div class="search-bar-container">
-    <mat-form-field appearance="fill" class="search-bar">
-      <mat-label> <mat-icon>search</mat-icon> Search for Books </mat-label>
-      <input matInput formControlName="search" placeholder="Ex: Love" />
-      <!-- <button mat-icon-button (click)="openAddProductDialog()" aria-label="Add"> -->
-      <mat-icon>add</mat-icon>
-      <!-- </button> -->
-    </mat-form-field>
-  </div>
-
-  <!-- <div class="search-bar">
+  <div class="search-bar">
     <form [formGroup]="searchForm" class="search-form">
       <mat-form-field appearance="fill">
         <mat-label><mat-icon>search</mat-icon> Search for Books</mat-label>
         <input matInput formControlName="search" placeholder="Ex: Love" />
       </mat-form-field>
     </form>
-  </div> -->
+  </div>
   <div *ngIf="isLoading" class="loading">
     <mat-spinner></mat-spinner>
   </div>
@@ -36,6 +26,14 @@
     />
     }
   </div>
+  <!-- <mat-paginator
+    [length]="products.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+    (page)="onPageChange($event)"
+  >
+  </mat-paginator> -->
   <!-- (deleteItem)="deleteItem($event)"
   [id]="movie.id" -->
 </div>
