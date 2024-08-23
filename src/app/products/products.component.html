@@ -38,6 +38,8 @@
     </div>
     <p class="product-author">by {{ product.author }}</p>
     <p class="product-price">{{ product.price | currency }}</p>
-    <button class="cart-button" (click)="addToCart()">+ Cart</button>
+    <button mat-raised-button class="cart-button" (click)="addToCart()">
+      + Cart
+    </button>
   </div>
 </div>

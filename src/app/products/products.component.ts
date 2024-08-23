@@ -11,6 +11,7 @@ import { CurrencyPipe } from '@angular/common';
 import { IBook } from '../products.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -23,6 +24,7 @@ import { SnackBarComponent } from '../snack-bar/snack-bar.component';
     MatCardModule,
     RouterLink,
     CurrencyPipe,
+    MatButtonModule,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
