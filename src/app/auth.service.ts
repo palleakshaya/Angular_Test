@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
+  loggedIn$ = this.loggedInSubject.asObservable();
+
   // private roleId = 1;
   constructor(private router: Router) {}
   getToken(): string | null {
@@ -26,6 +30,12 @@ export class AuthService {
     const roleId = roleIdStr ? Number(roleIdStr) : 1;
     return roleId === 0; // Return true if the role is 0 (admin)
   }
+  login(token: string): void {
+    localStorage.setItem('authToken', token);
+    this.loggedInSubject.next(true);
+    this.router.navigate(['/']);
+  }
+
   logout() {
     // Remove token and other user data from storage
     localStorage.removeItem('token');
