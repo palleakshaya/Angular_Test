@@ -145,4 +145,19 @@ export class ProductsService {
       },
     });
   }
+  updateProduct(bookId: string, product: IBook): Promise<IBook> {
+    return fetch(`${API}/products/${bookId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('token') as string, // Include token if needed
+      },
+      body: JSON.stringify(product),
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error('Failed to update product');
+      }
+      return response.json(); // Return the updated product data
+    });
+  }
 }

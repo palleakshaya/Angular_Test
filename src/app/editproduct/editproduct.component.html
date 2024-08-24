@@ -1,1 +1,48 @@
-<p>editproduct works!</p>
+<div class="edit-product-container">
+  <h2>Edit Product</h2>
+  <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+    <mat-form-field appearance="outline">
+      <mat-label>BookId</mat-label>
+      <input matInput formControlName="bookId" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="price" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="imageURL" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <input matInput formControlName="category" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Rating</mat-label>
+      <input matInput type="number" formControlName="rating" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Update Product
+    </button>
+  </form>
+</div>

@@ -32,12 +32,6 @@ import { AuthService } from '../auth.service';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
-  deleteProduct(arg0: IBook) {
-    throw new Error('Method not implemented.');
-  }
-  editProduct(arg0: IBook) {
-    throw new Error('Method not implemented.');
-  }
   @Input() bookId: any;
   @Input() product: IBook = {
     bookId: '1',
@@ -67,6 +61,8 @@ export class ProductsComponent {
     private authService: AuthService
   ) {}
   @Output() addItemEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() deleteProductEvent = new EventEmitter<IBook>();
+  @Output() editProductEvent = new EventEmitter<IBook>();
   // addToCart() {
   //   this.addItemEvent.emit(this.product);
   // }
@@ -89,6 +85,17 @@ export class ProductsComponent {
       horizontalPosition: 'center', // Position on the screen
       panelClass: ['snack-bar-success'],
     });
+  }
+  deleteProduct(arg0: IBook) {
+    console.log('Deleting product:', this.product);
+    this.deleteProductEvent.emit(this.product);
+    // throw new Error('Method not implemented.');
+  }
+
+  editProduct(arg0: IBook) {
+    // throw new Error('Method not implemented.');
+    console.log('Editing product:', this.product);
+    this.editProductEvent.emit(this.product);
   }
   // this.productsService.addProduct(this.product);
   // this.snackBar.open('Added to cart successfully!', 'Close', {

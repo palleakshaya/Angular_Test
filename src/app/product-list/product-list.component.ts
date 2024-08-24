@@ -22,6 +22,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AuthService } from '../auth.service';
 import { AddproductdialogComponent } from '../addproductdialog/addproductdialog.component';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-list',
   standalone: true,
@@ -56,7 +57,8 @@ export class ProductListComponent {
     public productsService: ProductsService,
     private fb: FormBuilder,
     public dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.searchForm = this.fb.group({
       search: '',
@@ -122,6 +124,10 @@ export class ProductListComponent {
   }
   addOneProduct(item: any) {
     return this.productsService.addProduct(item);
+  }
+  onEditProduct(product: IBook) {
+    // Navigate to the edit page with the selected product
+    this.router.navigate(['/editproduct', product.bookId]);
   }
   // addToCart(product: any) {
   //   console.log(product);
