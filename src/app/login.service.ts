@@ -5,6 +5,8 @@ export interface User {
   password: string;
 }
 export interface TokenResponse {
+  username: string;
+  roleId: string;
   msg: string;
   token: string;
 }

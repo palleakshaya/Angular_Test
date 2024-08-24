@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { LoginService } from '../login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { TokenResponse } from '../login.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -57,6 +58,8 @@ export class LoginComponent {
         .then((data) => {
           if (data.token) {
             localStorage.setItem('token', data.token);
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('roleId', data.roleId);
             this.router.navigate(['/products']);
             // const redirectUrl =
             //   localStorage.getItem('redirectUrl') || '/orders';

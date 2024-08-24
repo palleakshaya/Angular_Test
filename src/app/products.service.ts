@@ -14,6 +14,16 @@ export interface IBook {
   stock: number;
   qty: number;
 }
+export interface TokenResponse {
+  msg: string;
+  token: string;
+  username: string;
+  roleId: string;
+}
+export interface User {
+  username: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root',
