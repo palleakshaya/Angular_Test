@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { ProductsService } from '../products.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { IBook } from '../products.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -25,11 +26,18 @@ import { MatButtonModule } from '@angular/material/button';
     RouterLink,
     CurrencyPipe,
     MatButtonModule,
+    CommonModule,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
+  deleteProduct(arg0: IBook) {
+    throw new Error('Method not implemented.');
+  }
+  editProduct(arg0: IBook) {
+    throw new Error('Method not implemented.');
+  }
   @Input() bookId: any;
   @Input() product: IBook = {
     bookId: '1',
@@ -49,16 +57,29 @@ export class ProductsComponent {
   msg = '';
   filteredProducts: any = [];
   searchQuery: string = '';
+  isAdmin = false;
+
   constructor(
     public productsService: ProductsService,
     private route: ActivatedRoute,
     public router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {}
   @Output() addItemEvent: EventEmitter<any> = new EventEmitter<any>();
   // addToCart() {
   //   this.addItemEvent.emit(this.product);
   // }
+
+  ngOnInit(): void {
+    this.isAdmin = this.checkIfAdmin();
+  }
+
+  checkIfAdmin(): boolean {
+    const roleIdStr = localStorage.getItem('roleId');
+    const roleId = roleIdStr ? Number(roleIdStr) : 1;
+    return roleId === 0; // Return true if the role is 0 (admin)
+  }
 
   addToCart() {
     this.productsService.addProduct(this.product);

@@ -38,6 +38,23 @@
     </div>
     <p class="product-author">by {{ product.author }}</p>
     <p class="product-price">{{ product.price | currency }}</p>
+
+    <div *ngIf="isAdmin" class="admin-buttons">
+      <button
+        mat-icon-button
+        class="edit-button"
+        (click)="editProduct(product)"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="delete-button"
+        (click)="deleteProduct(product)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
     <button mat-raised-button class="cart-button" (click)="addToCart()">
       🛒Cart
     </button>
