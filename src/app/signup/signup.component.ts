@@ -15,6 +15,10 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { SignupService } from '../signup.service';
+import { SignupUser } from '../signup.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+// import { MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -26,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    // MatSnackBarModule,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
@@ -35,7 +40,12 @@ export class SignupComponent {
   hidePassword: boolean = true;
   hideConfirmPassword: boolean = true;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private signupService: SignupService,
+    private snackBar: MatSnackBar
+  ) {
     this.signupForm = this.fb.group(
       {
         username: ['', [Validators.required, Validators.email]],
@@ -63,22 +73,40 @@ export class SignupComponent {
       return null;
     }
   }
-
   onSubmit() {
     if (this.signupForm.valid) {
-      // Perform signup logic here, including sending the data to the backend
-      // Store the token in localStorage if signup is successful
-      const userData = this.signupForm.value;
-      // Call the signup service to send data to backend and get token
-      // this.signupService.signup(userData).subscribe((response: any) => {
-      //   if (response.token) {
-      //     localStorage.setItem('userToken', response.token);
-      //     localStorage.setItem('userId', response.userId);
-      this.router.navigate(['/products']);
-      //   }
-      // });
+      const userData: SignupUser = this.signupForm.value;
+      this.signupService
+        .signup(userData)
+        .then((response) => {
+          console.log('Signup response:', response); // Debug response
+          if (response.token) {
+            localStorage.setItem('userToken', response.token);
+            localStorage.setItem('userId', response.username); // Adjust as needed
+            console.log('Showing Snackbar for successful signup');
+            this.snackBar.open(
+              'Signed up successfully! You can login now🎊',
+              'Close',
+              {
+                duration: 3000,
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+              }
+            );
+            this.router.navigate(['/login']);
+          }
+        })
+        .catch((error) => {
+          console.error('Signup failed', error);
+          this.snackBar.open('Signup failed. Please try again.', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
+        });
     }
   }
+
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
   }

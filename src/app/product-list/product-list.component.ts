@@ -19,7 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 // import { AddProductComponent } from '../add-product/add-product.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-
+import { AuthService } from '../auth.service';
+import { AddproductdialogComponent } from '../addproductdialog/addproductdialog.component';
+import { AddProductComponent } from '../add-product/add-product.component';
 @Component({
   selector: 'app-product-list',
   standalone: true,
@@ -34,6 +36,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
     MatProgressSpinnerModule,
     MatIconModule,
     MatPaginator,
+    AddProductComponent,
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
@@ -42,6 +45,7 @@ export class ProductListComponent {
   searchForm!: FormGroup;
   products: any = [];
   isLoading: boolean = true;
+  isAdmin = false;
   msg = '';
   filteredProducts: any[] = [];
   noResults: boolean = false;
@@ -51,7 +55,8 @@ export class ProductListComponent {
   constructor(
     public productsService: ProductsService,
     private fb: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService: AuthService
   ) {
     this.searchForm = this.fb.group({
       search: '',
@@ -62,6 +67,8 @@ export class ProductListComponent {
     return product.id;
   }
   ngOnInit() {
+    this.isAdmin = this.authService.isAdmin(); // Assuming isAdmin() is a method in AuthService
+    console.log('isAdmin', this.isAdmin);
     this.loadProducts();
     this.searchForm
       .get('search')
@@ -102,7 +109,17 @@ export class ProductListComponent {
         this.msg = 'Something went wrong';
       });
   }
+  openAddProductDialog(): void {
+    const dialogRef = this.dialog.open(AddproductdialogComponent, {
+      width: '400px',
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+        this.loadProducts(); // Reload the product list after adding a new product
+      }
+    });
+  }
   addOneProduct(item: any) {
     return this.productsService.addProduct(item);
   }

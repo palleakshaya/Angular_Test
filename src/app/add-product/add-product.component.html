@@ -1,6 +1,6 @@
-<div class="add-product-container">
+<!-- <div class="add-product-container">
   <h2>Add New Product</h2>
-  <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+  <form [formGroup]="productForm" (ngSubmit)="addNewProduct()">
     <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" required />
@@ -19,4 +19,9 @@
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">Add Product</button>
   </form>
+</div> -->
+<div class="add-product-container">
+  <button mat-raised-button color="primary" (click)="openAddProductDialog()">
+    Add New Product
+  </button>
 </div>

@@ -55,8 +55,38 @@
     width: 100%;
     max-width: 1200px; /* Adjust to match the width of your book list */
   }
+  .fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+  }
+  .add-product-container {
+    display: flex;
+    justify-content: center; /* Center the add-product component horizontally */
+    margin: 20px 0; /* Add some vertical margin for spacing */
+  }
   
-
+  .add-product-container app-add-product {
+    max-width: 400px; /* Limit the width of the add-product component */
+    width: 100%; /* Make sure it takes full width up to the max-width */
+    padding: 16px; /* Add some padding inside the component */
+    border: 1px solid #ddd; /* Add a light border around the component */
+    border-radius: 8px; /* Round the corners slightly */
+    background-color: #f9f9f9; /* Light background color for better visibility */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  }
+  
+  .add-product-container app-add-product mat-form-field {
+    width: 100%; /* Ensure form fields inside take full width */
+    margin-bottom: 16px; /* Add space between form fields */
+  }
+  
+  .add-product-container app-add-product button {
+    display: block; /* Make buttons full-width */
+    width: 100%;
+  }
+  
 // .search-container {
 //     display: flex;
 //     justify-content: center; /* Center horizontally */

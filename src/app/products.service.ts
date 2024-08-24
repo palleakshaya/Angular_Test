@@ -79,7 +79,7 @@ export class ProductsService {
   //     this.CartData.push(product);
   //   }
   // }
-  addProduct(product: any) {
+  addProduct(product: IBook) {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const existingProductIndex = cart.findIndex(
       (i: { bookId: any }) => product.bookId === i.bookId
@@ -135,5 +135,14 @@ export class ProductsService {
   }
   clearCart() {
     localStorage.removeItem('cart');
+  }
+
+  addNewProduct(product: IBook): Observable<IBook> {
+    return this.http.post<IBook>(`${API}/products`, product, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('token') as string,
+      },
+    });
   }
 }
