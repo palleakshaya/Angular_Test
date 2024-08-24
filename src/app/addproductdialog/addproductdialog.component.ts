@@ -19,10 +19,10 @@ export class AddproductdialogComponent {
     private dialogRef: MatDialogRef<AddproductdialogComponent>
   ) {
     this.addProductForm = this.fb.group({
-      title: ['', Validators.required],
-      author: ['', Validators.required],
-      price: ['', [Validators.required, Validators.min(0)]],
-      imageURL: ['', Validators.required],
+      title: [''],
+      author: [''],
+      // price: ['', [Validators.required, Validators.min(0)]],
+      // imageURL: ['', Validators.required],
     });
   }
 

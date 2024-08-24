@@ -53,10 +53,11 @@ export class AddProductComponent {
   ngOnInit(): void {
     this.isAdmin = this.authService.isAdmin();
     this.productForm = this.fb.group({
-      title: ['', Validators.required],
-      author: ['', Validators.required],
-      price: ['', [Validators.required, Validators.min(0)]],
-      imageURL: ['', Validators.required],
+      bookId: [''],
+      title: [''],
+      author: [''],
+      // price: [''],
+      // imageURL: ['', Validators.required],
     });
   }
 
