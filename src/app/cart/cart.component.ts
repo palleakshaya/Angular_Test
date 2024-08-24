@@ -83,7 +83,12 @@ export class CartComponent {
     this.router.navigate([`orders`]);
   }
   removeFromCart(item: any) {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px',
+      data: {
+        message: 'Are you sure you want to remove this item from the cart?',
+      },
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
