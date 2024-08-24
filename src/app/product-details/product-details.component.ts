@@ -81,4 +81,7 @@ export class ProductDetailsComponent {
       });
     }
   }
+  goBack() {
+    this.router.navigate(['/products']);
+  }
 }
