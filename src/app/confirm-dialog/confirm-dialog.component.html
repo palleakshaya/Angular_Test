@@ -8,11 +8,15 @@
 <div class="dialog-container">
   <h2 mat-dialog-title class="dialog-title">Confirmation</h2>
   <div mat-dialog-content class="dialog-content">
-    <p>Are you sure you want to remove this item?</p>
+    <p>{{ data.message }}</p>
   </div>
 
   <div mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button color="primary" (click)="onCancel()">No</button>
-    <button mat-raised-button color="warn" (click)="onConfirm()">Yes</button>
+    <button mat-raised-button color="primary" (click)="onCancel()">
+      Cancel
+    </button>
+    <button mat-raised-button color="warn" (click)="onConfirm()">
+      Confirm
+    </button>
   </div>
 </div>

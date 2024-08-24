@@ -133,26 +133,36 @@ export class ProductListComponent {
     // Navigate to the edit page with the selected product
     this.router.navigate(['/editproduct', product.bookId]);
   }
-  deleteProduct(product: IBook) {
-    console.log('Deleting product:', product.bookId);
-    this.productsService
-      .deleteProduct(product.bookId)
-      .then(() => {
-        this.snackBar.open('Product deleted successfully!', 'Close', {
-          duration: 2000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'center',
-        });
-        // Optionally, refresh the product list or remove the product from the view
-      })
-      .catch((error) => {
-        console.error('Error deleting product:', error);
-        this.snackBar.open('Failed to delete product.', 'Close', {
-          duration: 2000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'center',
-        });
-      });
+  deleteProduct(product: IBook): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px',
+      data: { message: 'Are you sure you want to delete this product?' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Proceed with delete operation
+        this.productsService
+          .deleteProduct(product.bookId)
+          .then(() => {
+            this.snackBar.open('Product deleted successfully!', 'Close', {
+              duration: 2000,
+              verticalPosition: 'bottom',
+              horizontalPosition: 'center',
+            });
+            // Optionally, refresh the product list or remove the product from the view
+            this.loadProducts();
+          })
+          .catch((error) => {
+            console.error('Error deleting product:', error);
+            this.snackBar.open('Failed to delete product.', 'Close', {
+              duration: 2000,
+              verticalPosition: 'bottom',
+              horizontalPosition: 'center',
+            });
+          });
+      }
+    });
   }
 
   // addToCart(product: any) {
