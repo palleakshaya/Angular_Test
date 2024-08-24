@@ -56,8 +56,11 @@ export class AddProductComponent {
       bookId: [''],
       title: [''],
       author: [''],
-      // price: [''],
-      // imageURL: ['', Validators.required],
+      price: [''],
+      imageURL: [''],
+      category: [''],
+      description: [''],
+      rating: [''],
     });
   }
 
