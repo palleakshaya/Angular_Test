@@ -18,6 +18,7 @@ import { IBook, ProductsService } from '../products.service';
 import { AuthService } from '../auth.service';
 import { AddproductdialogComponent } from '../addproductdialog/addproductdialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 // import { ProductService } from '../product.service';
 
 @Component({
@@ -47,7 +48,8 @@ export class AddProductComponent {
     private productsService: ProductsService,
     private router: Router,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +71,9 @@ export class AddProductComponent {
       this.productsService.addNewProduct(this.productForm.value).subscribe({
         next: (response: IBook) => {
           console.log('Product added successfully', response);
+          this.snackBar.open('Product added successfully!', 'Close', {
+            duration: 3000,
+          });
           this.router.navigate(['/products']); // Navigate to products list
         },
         error: (error) => {
