@@ -21,16 +21,21 @@
           </a>
         </li>
         |
-        <li>
-          <a href="/login"
-            ><mat-icon
-              aria-hidden="false"
-              aria-label="Example home icon"
-              fontIcon="person"
-              >Login</mat-icon
+        <li *ngIf="!isLoggedIn">
+          <a href="/login">
+            <mat-icon aria-hidden="false" aria-label="Login" fontIcon="person"
+              >person</mat-icon
             >
-            <span>Login</span></a
-          >
+            <span>Login</span>
+          </a>
+        </li>
+        <li *ngIf="isLoggedIn">
+          <a href="#" (click)="logout()">
+            <mat-icon aria-hidden="false" aria-label="Logout" fontIcon="logout"
+              >logout</mat-icon
+            >
+            <span>Logout</span>
+          </a>
         </li>
         |
         <li>
