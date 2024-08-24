@@ -61,41 +61,66 @@
     right: 20px;
     z-index: 100;
   }
-  .add-product-container {
-    display: flex;
-    justify-content: center; /* Center the add-product component horizontally */
-    margin: 20px 0; /* Add some vertical margin for spacing */
-  }
+  /* Add Product Button Styling */
+.add-product-button {
+  // background-color: #007bff; /* Primary color */
+  color: black; /* Text color */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+.add-product-button mat-icon {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.add-product-button:hover {
+  background-color: gray; /* Darker shade for hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+// .add-product-button:focus {
+//   outline: none; /* Remove default focus outline */
+//   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Custom focus outline */
+// }
+
+  // .add-product-container {
+  //   display: flex;
+  //   justify-content: center; /* Center the add-product component horizontally */
+  //   margin: 20px 0; /* Add some vertical margin for spacing */
+  // }
   
-  .add-product-container app-add-product {
-    max-width: 400px; /* Limit the width of the add-product component */
-    width: 100%; /* Make sure it takes full width up to the max-width */
-    padding: 16px; /* Add some padding inside the component */
-    border: 1px solid #ddd; /* Add a light border around the component */
-    border-radius: 8px; /* Round the corners slightly */
-    background-color: #f9f9f9; /* Light background color for better visibility */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
-  }
+  // .add-product-container app-add-product {
+  //   max-width: 400px; /* Limit the width of the add-product component */
+  //   width: 100%; /* Make sure it takes full width up to the max-width */
+  //   padding: 16px; /* Add some padding inside the component */
+  //   border: 1px solid #ddd; /* Add a light border around the component */
+  //   border-radius: 8px; /* Round the corners slightly */
+  //   background-color: #f9f9f9; /* Light background color for better visibility */
+  //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  // }
   
-  .add-product-container app-add-product mat-form-field {
-    width: 100%; /* Ensure form fields inside take full width */
-    margin-bottom: 16px; /* Add space between form fields */
-  }
+  // .add-product-container app-add-product mat-form-field {
+  //   width: 100%; /* Ensure form fields inside take full width */
+  //   margin-bottom: 16px; /* Add space between form fields */
+  // }
   
-  .add-product-container app-add-product button {
-    display: flex; /* Make buttons full-width */
-    width: 100%;
-  }
-  .add-product-container {
-    display: flex;
-    justify-content: center; /* Center the button horizontally */
-    margin-top: 20px; /* Add some space at the top */
-  }
-  button.mat-raised-button:hover {
-    background-color: #3700b3; /* Darker shade on hover */
-    transform: translateY(-2px); /* Slightly elevate the button on hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-  }
+  // .add-product-container app-add-product button {
+  //   display: flex; /* Make buttons full-width */
+  //   width: 100%;
+  // }
+  // .add-product-container {
+  //   display: flex;
+  //   justify-content: center; /* Center the button horizontally */
+  //   margin-top: 20px; /* Add some space at the top */
+  // }
+  // button.mat-raised-button:hover {
+  //   background-color: #3700b3; /* Darker shade on hover */
+  //   transform: translateY(-2px); /* Slightly elevate the button on hover */
+  //   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+  // }
   
 
   

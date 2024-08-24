@@ -11,7 +11,12 @@
     <app-add-product></app-add-product>
   </div> -->
   <div *ngIf="isAdmin" class="add-product-container">
-    <button mat-raised-button color="primary" (click)="openAddProductDialog()">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openAddProductDialog()"
+      class="add-product-button"
+    >
       <!-- <mat-icon>add</mat-icon> -->
       ADD NEW PRODUCT
     </button>
