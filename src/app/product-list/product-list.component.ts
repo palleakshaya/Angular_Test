@@ -23,6 +23,9 @@ import { AuthService } from '../auth.service';
 import { AddproductdialogComponent } from '../addproductdialog/addproductdialog.component';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { Router } from '@angular/router';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-product-list',
   standalone: true,
@@ -58,7 +61,8 @@ export class ProductListComponent {
     private fb: FormBuilder,
     public dialog: MatDialog,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.searchForm = this.fb.group({
       search: '',
@@ -129,6 +133,28 @@ export class ProductListComponent {
     // Navigate to the edit page with the selected product
     this.router.navigate(['/editproduct', product.bookId]);
   }
+  deleteProduct(product: IBook) {
+    console.log('Deleting product:', product.bookId);
+    this.productsService
+      .deleteProduct(product.bookId)
+      .then(() => {
+        this.snackBar.open('Product deleted successfully!', 'Close', {
+          duration: 2000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+        });
+        // Optionally, refresh the product list or remove the product from the view
+      })
+      .catch((error) => {
+        console.error('Error deleting product:', error);
+        this.snackBar.open('Failed to delete product.', 'Close', {
+          duration: 2000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+        });
+      });
+  }
+
   // addToCart(product: any) {
   //   console.log(product);
   //   this.productsService.addingCart(product);

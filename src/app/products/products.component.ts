@@ -97,6 +97,7 @@ export class ProductsComponent {
     console.log('Editing product:', this.product);
     this.editProductEvent.emit(this.product);
   }
+
   // this.productsService.addProduct(this.product);
   // this.snackBar.open('Added to cart successfully!', 'Close', {
   //   duration: 2000, // Duration in milliseconds

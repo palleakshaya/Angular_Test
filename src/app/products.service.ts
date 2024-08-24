@@ -105,11 +105,21 @@ export class ProductsService {
     cart = cart.filter((item: { id: string }) => item.id !== id);
     localStorage.setItem('cart', JSON.stringify(cart));
   }
-  deleteProduct(id: any) {
-    return fetch(`${API}/Products/${id} `, {
+  deleteProduct(bookId: string): Promise<any> {
+    return fetch(`${API}/products/${bookId}`, {
       method: 'DELETE',
-    }).then((res) => res.json());
+      headers: {
+        'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('token') as string, // Include token if needed
+      },
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error('Failed to delete product');
+      }
+      return response.json();
+    });
   }
+
   getOrdersP(): Promise<any> {
     return fetch(`${API}/orders`).then((res) => res.json());
   }
