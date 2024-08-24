@@ -161,4 +161,7 @@ export class CartComponent {
   generateOrderId() {
     return (this.id += 1);
   }
+  goBack() {
+    this.router.navigate(['/products']);
+  }
 }
