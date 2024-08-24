@@ -83,9 +83,22 @@
   }
   
   .add-product-container app-add-product button {
-    display: block; /* Make buttons full-width */
+    display: flex; /* Make buttons full-width */
     width: 100%;
   }
+  .add-product-container {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 20px; /* Add some space at the top */
+  }
+  button.mat-raised-button:hover {
+    background-color: #3700b3; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slightly elevate the button on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+  }
+  
+
+  
   
 // .search-container {
 //     display: flex;

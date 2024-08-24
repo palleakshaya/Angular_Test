@@ -1,12 +1,128 @@
 /* add-product.component.css */
+// .add-product-container {
+//     display: flex;
+//     justify-content: center;
+//     margin: 20px;
+//   }
+  
+//   button {
+//     font-size: 16px;
+//     padding: 10px 20px;
+// //   }
+// .add-product-container {
+//     max-width: 900px;
+//     margin: auto;
+//     padding: 20px;
+//     background-color: #f9f9f9;
+//     border-radius: 8px;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   }
+  
+//   .add-product-container h2 {
+//     text-align: center;
+//     color: #333;
+//     margin-bottom: 20px;
+//   }
+  
+//   .mat-form-field {
+//     width: 100%;
+//     margin-bottom: 20px;
+//   }
+  
+//   .mat-form-field .mat-form-field-label {
+//     color: #555;
+//   }
+  
+//   .mat-form-field .mat-form-field-infix {
+//     background-color: #fff;
+//     border-radius: 4px;
+//     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+//   }
+  
+//   .mat-form-field .mat-form-field-underline {
+//     display: none;
+//   }
+  
+//   input.matInput {
+//     padding: 12px;
+//   }
+  
+//   button.mat-raised-button {
+//     display: block;
+//     width: 100%;
+//     padding: 12px;
+//     font-size: 16px;
+//     border-radius: 4px;
+//   }
+  
+//   button.mat-raised-button:hover {
+//     background-color: #0056b3;
+//     color: #fff;
+//   }
+  
+//   button.mat-raised-button:focus {
+//     outline: none;
+//     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+//   }
+
+
 .add-product-container {
+    max-width: 800px; /* Increased width */
+    margin: 40px auto; /* Center and add margin at top/bottom */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: center;
-    margin: 20px;
+    flex-direction: column;
+    height: auto; /* Allow height to adjust based on content */
   }
   
-  button {
+  .add-product-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .mat-form-field .mat-form-field-label {
+    color: #555;
+  }
+  
+  .mat-form-field .mat-form-field-infix {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-form-field .mat-form-field-underline {
+    display: none;
+  }
+  
+  input.matInput {
+    padding: 12px;
+  }
+  
+  button.mat-icon-button {
+    display: block;
+    width: 100%; /* Ensure button spans full width of the container */
+    padding: 12px;
     font-size: 16px;
-    padding: 10px 20px;
+    border-radius: 4px;
+    margin-top: 20px; /* Space between the last form field and the button */
+  }
+  
+  button.mat-icon-button:hover {
+    background-color: #0056b3;
+    color: #fff;
+  }
+  
+  button.mat-icon-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
   }
   

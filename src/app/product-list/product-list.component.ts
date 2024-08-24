@@ -110,7 +110,7 @@ export class ProductListComponent {
       });
   }
   openAddProductDialog(): void {
-    const dialogRef = this.dialog.open(AddproductdialogComponent, {
+    const dialogRef = this.dialog.open(AddProductComponent, {
       width: '400px',
     });
 

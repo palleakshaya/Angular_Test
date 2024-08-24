@@ -7,14 +7,15 @@
       </mat-form-field>
     </form>
   </div>
-  <div *ngIf="isAdmin" class="add-product-container">
-    <app-add-product></app-add-product>
-  </div>
   <!-- <div *ngIf="isAdmin" class="add-product-container">
-    <button mat-fab color="primary" (click)="openAddProductDialog()">
-      <mat-icon>add</mat-icon>
-    </button>
+    <app-add-product></app-add-product>
   </div> -->
+  <div *ngIf="isAdmin" class="add-product-container">
+    <button mat-raised-button color="primary" (click)="openAddProductDialog()">
+      <!-- <mat-icon>add</mat-icon> -->
+      ADD NEW PRODUCT
+    </button>
+  </div>
 
   <div *ngIf="isLoading" class="loading">
     <mat-spinner></mat-spinner>
