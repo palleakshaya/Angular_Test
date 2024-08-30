@@ -27,7 +27,15 @@
   />
   <div class="product-details">
     <div class="title-info">
-      <h2 class="product-title">{{ product.title }}</h2>
+      <h2
+        class="product-title"
+        style="
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+            'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        "
+      >
+        {{ product.title }}
+      </h2>
       <button
         mat-icon-button
         routerLink="/products/{{ bookId }}"
@@ -36,19 +44,17 @@
         <mat-icon>info</mat-icon>
       </button>
     </div>
-    <p class="product-author">by {{ product.author }}</p>
+    <p class="product-author" style="font-style: italic">
+      by {{ product.author }}
+    </p>
     <p class="product-price">{{ product.price | currency }}</p>
 
     <div *ngIf="isAdmin" class="admin-buttons">
-      <button
-        mat-icon-button
-        class="edit-button"
-        (click)="editProduct(product)"
-      >
+      <button mat-mini-fab class="edit-button" (click)="editProduct(product)">
         <mat-icon>edit</mat-icon>
       </button>
       <button
-        mat-icon-button
+        mat-mini-fab
         class="delete-button"
         (click)="deleteProduct(product)"
       >
